@@ -1,0 +1,25 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}l l l l c@{}}
+\toprule
+Task & Factor & Named property & Descriptor & Pairwise accuracy \\
+\midrule
+DA & ligand & steric bulk & \%$V_\mathrm{bur}$ & 0.66 \\
+DA & ligand & $\sigma$-donor strength & HOMO energy & 0.80 \\
+DA & base & basicity & p$K_\mathrm{a}$(H) & 0.94 \\
+DA & solvent & polarity & dielectric const. & 0.92 \\
+DeoxyF & alcohol & steric hindrance & \%$V_\mathrm{bur}$ (C$_\alpha$) & 0.72 \\
+DeoxyF & sulfonyl fluoride & electrophilicity & LUMO energy & 0.82 \\
+DeoxyF & base & basicity & p$K_\mathrm{a}$(H), MeCN & 0.93 \\
+NSA & catalyst & 3,3$'$-substituent bulk & \%$V_\mathrm{bur}$ & 0.67 \\
+NSA & catalyst & Br{\o}nsted acidity & p$K_\mathrm{a}$ & 0.91 \\
+NSA & imine & electrophilicity & LUMO energy & 0.81 \\
+Boryl & ligand & steric bulk & \%$V_\mathrm{bur}$ & 0.70 \\
+Boryl & aryl electrophile & C--X electrophilicity & LUMO energy & 0.84 \\
+\bottomrule
+\end{tabular}
+\caption{Pairwise accuracy of the main oracle for each property--descriptor pair on Group A. Pairs tied on the descriptor are excluded.}
+\label{tab:rq0prop}
+\end{table*}

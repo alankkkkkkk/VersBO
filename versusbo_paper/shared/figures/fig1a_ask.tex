@@ -1,0 +1,29 @@
+% Figure 1(a): four ways to query an LLM about reagents. Natural width 5.4 cm.
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\W{5.4}
+\tikzset{
+  tag/.style={rounded corners=2pt, inner xsep=0pt, inner ysep=1.7pt, minimum width=1.18cm,
+    font=\bfseries\fontsize{5.6}{6}\selectfont, text=white, fill=#1},
+  q/.style={font=\fontsize{6.3}{7.2}\selectfont, text=tInk, anchor=west, inner sep=0pt},
+  ans/.style={font=\fontsize{6.3}{7.2}\selectfont, text=#1, anchor=west, inner sep=0pt},
+  note/.style={font=\itshape\fontsize{5.8}{6.6}\selectfont, text=tMuted, anchor=west, inner sep=0pt},
+}
+\foreach \i/\tg/\col/\qq/\aa/\nn in {
+  0/EMBED/tMuted/{text of a reagent or experiment}/{$\mathbf{e}\in\mathbb{R}^{4096}$}/{a 4096-d GP input},
+  1/RATE/tBlue/{Basicity of Cs$_2$CO$_3$, from 1 to 10?}/{$7$}/{41\% of ratings land on 6--8},
+  2/PREDICT/tBlue/{Yield of this experiment?}/{$64\%$}/{$\rho=0.23$ with measured yield},
+  3/COMPARE/tRed/{More basic: Cs$_2$CO$_3$ or K$_3$PO$_4$?}/{Cs$_2$CO$_3$}/{82\% agree with descriptors}}{
+  \pgfmathsetmacro{\yy}{-0.95*\i-(\i==3)*0.14}
+  \ifnum\i=3
+    \draw[draw=tRed, line width=0.7pt, fill=tRedTint!70, rounded corners=3pt] (0,\yy+0.08) rectangle (\W,\yy-0.78);
+  \else
+    \draw[draw=tLine, line width=0.45pt, fill=white, rounded corners=3pt] (0,\yy+0.08) rectangle (\W,\yy-0.78);
+  \fi
+  \node[tag=\col, anchor=north west] at (0.1,\yy-0.03) {\tg};
+  \node[q] at (1.38,\yy-0.17) {\qq};
+  \node[ans=\col] (A) at (1.38,\yy-0.53) {$\to$\ \textbf{\aa}};
+  \node[note] at ($(A.east)+(0.16,0)$) {\nn};
+}
+\node[font=\bfseries\fontsize{5.6}{6}\selectfont, text=tRed, fill=white, draw=tRed, line width=0.6pt,
+  rounded corners=2pt, inner xsep=3pt, inner ysep=1.4pt] at (\W-0.75,-2.99+0.08) {\ours{} asks this};
+\end{tikzpicture}

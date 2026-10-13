@@ -1,0 +1,6 @@
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{\input{../shared/figures/fig2_method.tex}}
+\caption{Overview of \ours{}. The LLM oracle (red) names ordered properties of the reagents in each factor and answers comparisons along them; the laboratory (violet) runs experiments. Each source feeds its own likelihood, and one joint posterior over reagent coordinates $z$, per-axis reliabilities $\lambda$ and GP hyperparameters $\theta$ selects both the next comparisons, by their mutual information with the next best experiment, and the next experiment, by qLogNEI averaged over coordinate samples. Every $\Delta$ iterations, a free dimension that has gained relevance is shown to the LLM to be named (dashed). The scatter shows ligand coordinates on DA with posterior ellipses; the bars show the reliabilities learned by iteration 40.}
+\label{fig:method}
+\end{figure*}

@@ -1,0 +1,374 @@
+\begin{thebibliography}{46}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Ahneman et~al.(2018)Ahneman, Estrada, Lin, Dreher, and
+  Doyle}]{ahneman2018predicting}
+Derek~T. Ahneman, Jes{\'u}s~G. Estrada, Shishi Lin, Spencer~D. Dreher, and
+  Abigail~G. Doyle. 2018.
+\newblock Predicting reaction performance in {C}--{N} cross-coupling using
+  machine learning.
+\newblock \emph{Science}, 360(6385):186--190.
+
+\bibitem[{Ament et~al.(2023)Ament, Daulton, Eriksson, Balandat, and
+  Bakshy}]{ament2023unexpected}
+Sebastian Ament, Samuel Daulton, David Eriksson, Maximilian Balandat, and Eytan
+  Bakshy. 2023.
+\newblock Unexpected improvements to expected improvement for {B}ayesian
+  optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36.
+
+\bibitem[{Balandat et~al.(2020)Balandat, Karrer, Jiang, Daulton, Letham,
+  Wilson, and Bakshy}]{balandat2020botorch}
+Maximilian Balandat, Brian Karrer, Daniel~R. Jiang, Samuel Daulton, Benjamin
+  Letham, Andrew~Gordon Wilson, and Eytan Bakshy. 2020.
+\newblock {BoTorch}: A framework for efficient {M}onte-{C}arlo {B}ayesian
+  optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33.
+
+\bibitem[{Bogunovic and Krause(2021)}]{bogunovic2021misspecified}
+Ilija Bogunovic and Andreas Krause. 2021.
+\newblock Misspecified {G}aussian process bandit optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34.
+
+\bibitem[{Bradley and Terry(1952)}]{bradley1952rank}
+Ralph~Allan Bradley and Milton~E. Terry. 1952.
+\newblock Rank analysis of incomplete block designs: {I}. {T}he method of
+  paired comparisons.
+\newblock \emph{Biometrika}, 39(3/4):324--345.
+
+\bibitem[{Chen and Yi(2026)}]{chen2026caliper}
+Jiangyu Chen and Ban Yi. 2026.
+\newblock Evidence-gated {LLM} priors for multi-objective {B}ayesian
+  optimization.
+\newblock \emph{arXiv preprint arXiv:2606.01730}.
+
+\bibitem[{Chen et~al.(2026)Chen, Yuan, Zhang, Dong, Zhou, Niu, Zhou, Liu, Li,
+  Ye, and Gu}]{chen2026labo}
+Zhuo Chen, Xinzhe Yuan, Jianshu Zhang, Jinzong Dong, Ruichen Zhou, Yingchun
+  Niu, Tianhang Zhou, Yu~Yang~Fredrik Liu, Yuqiang Li, Nanyang Ye, and Qinying
+  Gu. 2026.
+\newblock {LABO}: {LLM}-accelerated {B}ayesian optimization through broad
+  exploration and selective experimentation.
+\newblock In \emph{Proceedings of the 43rd International Conference on Machine
+  Learning}, volume 306 of \emph{Proceedings of Machine Learning Research},
+  pages 17979--18005.
+
+\bibitem[{Chu and Ghahramani(2005)}]{chu2005preference}
+Wei Chu and Zoubin Ghahramani. 2005.
+\newblock Preference learning with {G}aussian processes.
+\newblock In \emph{Proceedings of the 22nd International Conference on Machine
+  Learning}, pages 137--144.
+
+\bibitem[{Ciss{\'e} et~al.(2025)Ciss{\'e}, Evangelopoulos, Gusev, and
+  Cooper}]{cisse2025bora}
+Abdoulatif Ciss{\'e}, Xenophon Evangelopoulos, Vladimir~V. Gusev, and Andrew~I.
+  Cooper. 2025.
+\newblock \href {https://doi.org/10.24963/ijcai.2025/553} {Language-based
+  {B}ayesian optimization research assistant ({BORA})}.
+\newblock In \emph{Proceedings of the Thirty-Fourth International Joint
+  Conference on Artificial Intelligence}, pages 4967--4975.
+
+\bibitem[{Gandhi et~al.(2025)Gandhi, Brown, Aikonen, Compton, Neves,
+  Martinez~Alvarado, Strambeanu, Leonard, and Doyle}]{gandhi2025chanlam}
+S.~S. Gandhi, G.~Z. Brown, S.~Aikonen, J.~S. Compton, P.~Neves, J.~I.
+  Martinez~Alvarado, I.~I. Strambeanu, K.~A. Leonard, and A.~G. Doyle. 2025.
+\newblock \href {https://doi.org/10.1021/acscatal.4c07972} {Data science-driven
+  discovery of optimal conditions and a condition-selection model for the
+  {C}han--{L}am coupling of primary sulfonamides}.
+\newblock \emph{ACS Catalysis}, 15:2292--2304.
+
+\bibitem[{Gesmundo et~al.(2023)Gesmundo, Dykstra, Douthwaite, Kao, Zhao,
+  Mahjour, Ferguson, Dreher, Sauvagnat, Sauri, and
+  Cernak}]{gesmundo2023miniaturization}
+Nathan Gesmundo, Kevin Dykstra, James~L. Douthwaite, Yu-Ting Kao, Ruheng Zhao,
+  Babak Mahjour, Ron Ferguson, Spencer Dreher, Berengere Sauvagnat, Josep
+  Sauri, and Tim Cernak. 2023.
+\newblock \href {https://doi.org/10.1038/s44160-023-00351-1} {Miniaturization
+  of popular reactions from the medicinal chemists' toolbox for
+  ultrahigh-throughput experimentation}.
+\newblock \emph{Nature Synthesis}, 2(11):1082--1091.
+
+\bibitem[{Gonz{\'a}lez et~al.(2017)Gonz{\'a}lez, Dai, Damianou, and
+  Lawrence}]{gonzalez2017preferential}
+Javier Gonz{\'a}lez, Zhenwen Dai, Andreas Damianou, and Neil~D. Lawrence. 2017.
+\newblock Preferential {B}ayesian optimization.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine
+  Learning}, volume~70 of \emph{Proceedings of Machine Learning Research},
+  pages 1282--1291.
+
+\bibitem[{H{\"a}se et~al.(2021)H{\"a}se, Aldeghi, Hickman, Roch, Christensen,
+  Liles, Castellanos, and Aspuru-Guzik}]{hase2021olympus}
+Florian H{\"a}se, Matteo Aldeghi, Riley~J. Hickman, Lo{\"i}c~M. Roch, Melodie
+  Christensen, Elena Liles, Jason~E. Castellanos, and Al{\'a}n Aspuru-Guzik.
+  2021.
+\newblock Olympus: A benchmarking framework for noisy optimization and
+  experiment planning.
+\newblock \emph{Machine Learning: Science and Technology}, 2(3):035021.
+
+\bibitem[{Hern{\'a}ndez-Lobato et~al.(2014)Hern{\'a}ndez-Lobato, Hoffman, and
+  Ghahramani}]{hernandezlobato2014pes}
+Jos{\'e}~Miguel Hern{\'a}ndez-Lobato, Matthew~W. Hoffman, and Zoubin
+  Ghahramani. 2014.
+\newblock Predictive entropy search for efficient global optimization of
+  black-box functions.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~27.
+
+\bibitem[{Hollmann et~al.(2025)Hollmann, M{\"u}ller, Purucker, Krishnakumar,
+  K{\"o}rfer, Hoo, Schirrmeister, and Hutter}]{hollmann2025tabpfn}
+Noah Hollmann, Samuel M{\"u}ller, Lennart Purucker, Arjun Krishnakumar, Max
+  K{\"o}rfer, Shi~Bin Hoo, Robin~Tibor Schirrmeister, and Frank Hutter. 2025.
+\newblock Accurate predictions on small data with a tabular foundation model.
+\newblock \emph{Nature}, 637:319--326.
+
+\bibitem[{Kobalczyk et~al.(2026)Kobalczyk, Lin, Letham, Zhao, Balandat, and
+  Bakshy}]{kobalczyk2026lilo}
+Katarzyna Kobalczyk, Zhiyuan Lin, Benjamin Letham, Zhuokai Zhao, Maximilian
+  Balandat, and Eytan Bakshy. 2026.
+\newblock {LILO}: {B}ayesian optimization with natural language feedback.
+\newblock In \emph{Proceedings of the 43rd International Conference on Machine
+  Learning}, volume 306 of \emph{Proceedings of Machine Learning Research}.
+
+\bibitem[{Kristiadi et~al.(2024)Kristiadi, Strieth-Kalthoff, Skreta, Poupart,
+  Aspuru-Guzik, and Pleiss}]{kristiadi2024sober}
+Agustinus Kristiadi, Felix Strieth-Kalthoff, Marta Skreta, Pascal Poupart,
+  Al{\'a}n Aspuru-Guzik, and Geoff Pleiss. 2024.
+\newblock A sober look at {LLMs} for material discovery: Are they actually good
+  for {B}ayesian optimization over molecules?
+\newblock In \emph{Proceedings of the 41st International Conference on Machine
+  Learning}, volume 235 of \emph{Proceedings of Machine Learning Research}.
+
+\bibitem[{Lei and Cooper(2026)}]{lei2026elicitation}
+Ge~Lei and Samuel~J. Cooper. 2026.
+\newblock Elicitation matters: How prompts and query protocols shape {LLM}
+  surrogates under sparse observations.
+\newblock \emph{arXiv preprint arXiv:2605.04764}.
+
+\bibitem[{Lin et~al.(2026)Lin, Letham, Dooley, Balandat, and
+  Bakshy}]{lin2026embedding}
+Zhiyuan~Jerry Lin, Benjamin Letham, Samuel Dooley, Maximilian Balandat, and
+  Eytan Bakshy. 2026.
+\newblock Embedding by elicitation: Dynamic representations for {B}ayesian
+  optimization of system prompts.
+\newblock \emph{arXiv preprint arXiv:2605.19093}.
+
+\bibitem[{Liu et~al.(2024)Liu, Astorga, Seedat, and van~der
+  Schaar}]{liu2024llambo}
+Tennison Liu, Nicol{\'a}s Astorga, Nabeel Seedat, and Mihaela van~der Schaar.
+  2024.
+\newblock Large language models to enhance {B}ayesian optimization.
+\newblock In \emph{The Twelfth International Conference on Learning
+  Representations}.
+
+\bibitem[{Liusie et~al.(2024)Liusie, Manakul, and
+  Gales}]{liusie2024comparative}
+Adian Liusie, Potsawee Manakul, and Mark Gales. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.eacl-long.8} {{LLM}
+  comparative assessment: Zero-shot {NLG} evaluation through pairwise
+  comparisons using large language models}.
+\newblock In \emph{Proceedings of the 18th Conference of the European Chapter
+  of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages 139--151.
+
+\bibitem[{MacKnight et~al.(2025)MacKnight, Regio, Ethier, Baldwin, and
+  Gomes}]{macknight2025pretrained}
+Robert MacKnight, Jose~Emilio Regio, Jeffrey~G. Ethier, Luke~A. Baldwin, and
+  Gabe Gomes. 2025.
+\newblock Pre-trained knowledge elevates large language models beyond
+  traditional chemical reaction optimizers.
+\newblock \emph{arXiv preprint arXiv:2509.00103}.
+
+\bibitem[{Nielsen et~al.(2018)Nielsen, Ahneman, Riera, and
+  Doyle}]{nielsen2018deoxyfluorination}
+Matthew~K. Nielsen, Derek~T. Ahneman, Orestes Riera, and Abigail~G. Doyle.
+  2018.
+\newblock Deoxyfluorination with sulfonyl fluorides: Navigating reaction space
+  with machine learning.
+\newblock \emph{Journal of the American Chemical Society}, 140(15):5004--5008.
+
+\bibitem[{Oune and Bostanabad(2021)}]{oune2021latent}
+Nicholas Oune and Ramin Bostanabad. 2021.
+\newblock Latent map {G}aussian processes for mixed variable metamodeling.
+\newblock \emph{Computer Methods in Applied Mechanics and Engineering},
+  387:114128.
+
+\bibitem[{Patel et~al.(2026)Patel, Moayedpour, De~Lescure, Kogler-Anele,
+  Cherney, Jager, and Jangjou}]{patel2026distilling}
+Roshan Patel, Saeed Moayedpour, Louis De~Lescure, Lorenzo Kogler-Anele, Alan
+  Cherney, Sven Jager, and Yasser Jangjou. 2026.
+\newblock \href {https://doi.org/10.1039/D6DD00052E} {Distilling and exploiting
+  quantitative insights from large language models for enhanced {B}ayesian
+  optimization of chemical reactions}.
+\newblock \emph{Digital Discovery}.
+
+\bibitem[{Perera et~al.(2018)Perera, Tucker, Brahmbhatt, Helal, Chong, Farrell,
+  Richardson, and Sach}]{perera2018platform}
+Damith Perera, Joseph~W. Tucker, Shalini Brahmbhatt, Christopher~J. Helal,
+  Ashley Chong, William Farrell, Paul Richardson, and Neal~W. Sach. 2018.
+\newblock A platform for automated nanomole-scale reaction screening and
+  micromole-scale synthesis in flow.
+\newblock \emph{Science}, 359(6374):429--434.
+
+\bibitem[{Qin et~al.(2024)Qin, Jagerman, Hui, Zhuang, Wu, Yan, Shen, Liu, Liu,
+  Metzler, Wang, and Bendersky}]{qin2024prp}
+Zhen Qin, Rolf Jagerman, Kai Hui, Honglei Zhuang, Junru Wu, Le~Yan, Jiaming
+  Shen, Tianqi Liu, Jialu Liu, Donald Metzler, Xuanhui Wang, and Michael
+  Bendersky. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.findings-naacl.97} {Large
+  language models are effective text rankers with pairwise ranking prompting}.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  NAACL 2024}, pages 1504--1518.
+
+\bibitem[{Ramos et~al.(2026)Ramos, Michtavy, Porosoff, and
+  White}]{ramos2026boicl}
+Mayk~Caldas Ramos, Shane~S. Michtavy, Marc~D. Porosoff, and Andrew~D. White.
+  2026.
+\newblock {B}ayesian optimization of catalysis with in-context learning.
+\newblock \emph{ACS Central Science}, 12(5).
+
+\bibitem[{Rankovi{\'c} et~al.(2026)Rankovi{\'c}, Griffiths, and
+  Schwaller}]{rankovic2026gollum}
+Bojana Rankovi{\'c}, Ryan-Rhys Griffiths, and Philippe Schwaller. 2026.
+\newblock \href {https://doi.org/10.1038/s42256-026-01283-z} {Large language
+  models as uncertainty-calibrated optimizers for experimental discovery}.
+\newblock \emph{Nature Machine Intelligence}.
+
+\bibitem[{Rankovi{\'c} and Schwaller(2023)}]{rankovic2023bochemian}
+Bojana Rankovi{\'c} and Philippe Schwaller. 2023.
+\newblock {BoChemian}: Large language model embeddings for {B}ayesian
+  optimization of chemical reactions.
+\newblock In \emph{NeurIPS 2023 Workshop on Adaptive Experimental Design and
+  Active Learning in the Real World}.
+
+\bibitem[{Rogers and Ponnada(2026)}]{rogers2026zeroshot}
+Theodore Rogers and Srividya Ponnada. 2026.
+\newblock Zero-shot {B}ayesian optimization with {TabPFN}: Competitive with
+  state-of-the-art without per-task training.
+\newblock In \emph{Proceedings of the International Conference on Automated
+  Machine Learning (AutoML)}.
+
+\bibitem[{Schlama et~al.(2025)Schlama, Sin, Burwood, P{\"u}ntener, Bigler, and
+  Schwaller}]{schlama2025swarm}
+R{\'e}mi Schlama, Joshua~W. Sin, Ryan~P. Burwood, Kurt P{\"u}ntener, Raphael
+  Bigler, and Philippe Schwaller. 2025.
+\newblock Swarm intelligence for chemical reaction optimisation.
+\newblock \emph{arXiv preprint arXiv:2509.11798}.
+
+\bibitem[{Schmid et~al.(2025)Schmid, Rajaonson, Ser, Haddadnia, Leong,
+  Aspuru-Guzik, Kristiadi, Jorner, and Strieth-Kalthoff}]{schmid2025general}
+Stefan~P. Schmid, Ella~Miray Rajaonson, Cher~Tian Ser, Mohammad Haddadnia,
+  Shi~Xuan Leong, Al{\'a}n Aspuru-Guzik, Agustinus Kristiadi, Kjell Jorner, and
+  Felix Strieth-Kalthoff. 2025.
+\newblock {B}ayesian optimization for general reaction conditions.
+\newblock \emph{arXiv preprint arXiv:2502.18966}.
+
+\bibitem[{Shields et~al.(2021)Shields, Stevens, Li, Parasram, Damani,
+  Martinez~Alvarado, Janey, Adams, and Doyle}]{shields2021bayesian}
+Benjamin~J. Shields, Jason Stevens, Jun Li, Marvin Parasram, Farhan Damani,
+  Jesus~I. Martinez~Alvarado, Jacob~M. Janey, Ryan~P. Adams, and Abigail~G.
+  Doyle. 2021.
+\newblock {B}ayesian reaction optimization as a tool for chemical synthesis.
+\newblock \emph{Nature}, 590:89--96.
+
+\bibitem[{Sin et~al.(2026)Sin, Segura, Rankovi{\'c}, Chau, Lutz, Anelli,
+  Burwood, P{\"u}ntener, Notheis, Bigler, and Schwaller}]{sin2026dynamic}
+Joshua~W. Sin, David~Ming Segura, Bojana Rankovi{\'c}, Siu~Lun Chau, Marius
+  D.~R. Lutz, Andrea Anelli, Ryan~P. Burwood, Kurt P{\"u}ntener, Maximilian~J.
+  Notheis, Raphael Bigler, and Philippe Schwaller. 2026.
+\newblock Dynamic language model representations for multi-objective reaction
+  optimisation.
+\newblock \emph{arXiv preprint arXiv:2609.11790}.
+
+\bibitem[{Stevens et~al.(2022)Stevens, Li, Simmons, Wisniewski, DiSomma,
+  Fraunhoffer, Geng, Hao, and Jackson}]{stevens2022borylation}
+Jason~M. Stevens, Jun Li, Eric~M. Simmons, Steven~R. Wisniewski, Stacey
+  DiSomma, Kenneth~J. Fraunhoffer, Peng Geng, Bo~Hao, and Erika~W. Jackson.
+  2022.
+\newblock \href {https://doi.org/10.1021/acs.organomet.2c00089} {Advancing base
+  metal catalysis through data science: Insight and predictive models for
+  {Ni}-catalyzed borylation through supervised machine learning}.
+\newblock \emph{Organometallics}, 41(14):1847--1864.
+
+\bibitem[{Suwandi et~al.(2025)Suwandi, Yin, Wang, Li, Chang, and
+  Theodoridis}]{suwandi2025cake}
+Richard~Cornelius Suwandi, Feng Yin, Juntao Wang, Renjie Li, Tsung-Hui Chang,
+  and Sergios Theodoridis. 2025.
+\newblock Adaptive kernel design for {B}ayesian optimization is a piece of
+  {CAKE} with {LLMs}.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~38.
+
+\bibitem[{Thurstone(1927)}]{thurstone1927law}
+Louis~L. Thurstone. 1927.
+\newblock A law of comparative judgment.
+\newblock \emph{Psychological Review}, 34(4):273--286.
+
+\bibitem[{Vakili et~al.(2021)Vakili, Khezeli, and
+  Picheny}]{vakili2021information}
+Sattar Vakili, Kia Khezeli, and Victor Picheny. 2021.
+\newblock On information gain and regret bounds in {G}aussian process bandits.
+\newblock In \emph{Proceedings of the 24th International Conference on
+  Artificial Intelligence and Statistics}, volume 130 of \emph{Proceedings of
+  Machine Learning Research}, pages 82--90.
+
+\bibitem[{Wang et~al.(2024)Wang, Li, Chen, Cai, Zhu, Lin, Cao, Kong, Liu, Liu,
+  and Sui}]{wang2024fair}
+Peiyi Wang, Lei Li, Liang Chen, Zefan Cai, Dawei Zhu, Binghuai Lin, Yunbo Cao,
+  Lingpeng Kong, Qi~Liu, Tianyu Liu, and Zhifang Sui. 2024.
+\newblock \href {https://doi.org/10.18653/v1/2024.acl-long.511} {Large language
+  models are not fair evaluators}.
+\newblock In \emph{Proceedings of the 62nd Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 9440--9450.
+
+\bibitem[{Yang et~al.(2026)Yang, Wang, Ge, Wang, Fu, and
+  Li}]{yang2026reasoningbo}
+Zhuo Yang, Daolang Wang, Lingli Ge, Beilun Wang, Tianfan Fu, and Yuqiang Li.
+  2026.
+\newblock \href {https://doi.org/10.1002/mgea.70086} {Reasoning {BO}: Enhancing
+  {B}ayesian optimization with the reasoning power of {LLMs}}.
+\newblock \emph{Materials Genome Engineering Advances}.
+
+\bibitem[{Yuan et~al.(2026)Yuan, Chen, Zhang, Xiong, Ye, Li, and
+  Gu}]{yuan2026lgbo}
+Xinzhe Yuan, Zhuo Chen, Jianshu Zhang, Huan Xiong, Nanyang Ye, Yuqiang Li, and
+  Qinying Gu. 2026.
+\newblock Unleashing {LLMs} in {B}ayesian optimization: Preference-guided
+  framework for scientific discovery.
+\newblock In \emph{The Fourteenth International Conference on Learning
+  Representations}.
+
+\bibitem[{Zahrt et~al.(2019)Zahrt, Henle, Rose, Wang, Darrow, and
+  Denmark}]{zahrt2019prediction}
+Andrew~F. Zahrt, Jeremy~J. Henle, Brennan~T. Rose, Yang Wang, William~T.
+  Darrow, and Scott~E. Denmark. 2019.
+\newblock Prediction of higher-selectivity catalysts by computer-driven
+  workflow and machine learning.
+\newblock \emph{Science}, 363(6424):eaau5631.
+
+\bibitem[{Zhang et~al.(2025)Zhang, Lin, Yang, Kong, Yu, and
+  Liao}]{zhang2025amide}
+Chonghuan Zhang, Qianghua Lin, Chenxi Yang, Yaxian Kong, Zhunzhun Yu, and
+  Kuangbiao Liao. 2025.
+\newblock \href {https://doi.org/10.1039/D5SC03364K} {Intermediate knowledge
+  enhanced the performance of the amide coupling yield prediction model}.
+\newblock \emph{Chemical Science}, 16(26).
+
+\bibitem[{Zhang et~al.(2020)Zhang, Tao, Chen, and Apley}]{zhang2020latent}
+Yichi Zhang, Siyu Tao, Wei Chen, and Daniel~W. Apley. 2020.
+\newblock A latent variable approach to {G}aussian process modeling with
+  qualitative and quantitative factors.
+\newblock \emph{Technometrics}, 62(3):291--302.
+
+\bibitem[{Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
+  Li, Xing, Zhang, Gonzalez, and Stoica}]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric~P. Xing, Hao Zhang, Joseph~E.
+  Gonzalez, and Ion Stoica. 2023.
+\newblock Judging {LLM}-as-a-judge with {MT}-bench and {C}hatbot {A}rena.
+\newblock In \emph{Advances in Neural Information Processing Systems (Datasets
+  and Benchmarks Track)}, volume~36.
+
+\end{thebibliography}

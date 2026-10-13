@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l l l r p{4.3cm} l c c@{}}
+\toprule
+ID & Reaction & Objective & Pool & Categorical factors (levels) & Numeric & $d$ & Group \\
+\midrule
+DA & Direct arylation & yield & 1,728 & ligand (12), base (4), solvent (4) & $T$, conc. & 12 & A \\
+DeoxyF & Deoxyfluorination & yield & 740 & alcohol (37), RSO$_2$F (5), base (4) & -- & 10 & A \\
+NSA & CPA $N$,$S$-acetal formation & $\Delta\Delta G^{\ddagger}$ & 1,075 & catalyst (43), imine (5), thiol (5) & -- & 10 & A \\
+Boryl & Ni-cat. borylation & yield & 1,518 & Ar--X (33), ligand (23), solvent (2) & -- & 9 & A \\
+Amide & Amide coupling & yield & 648 & acid (3), amine (3), conditions (72) & -- & 8 & B \\
+RedAm & Reductive amination & conversion & 768 & substrate (16), solvent (2) & 3 & 8 & B \\
+SuzC & Suzuki--Miyaura & conversion & 960 & Ar--X (8), boronate (10), conditions (12) & -- & 12 & B \\
+ChanLam & Chan--Lam coupling & wtd.\ selectivity & 1,920 & RSO$_2$NH$_2$ (10), ArB(OH)$_2$ (2), Cu (4), solvent (4), base (6) & -- & 14 & B \\
+NiSuz & Ni-cat. Suzuki (emulated) & yield & 87,203 & ligand, base, solvent, additive & -- & 13 & C \\
+\bottomrule
+\end{tabular}
+\caption{Benchmarks. Pool is the number of candidate experiments; $d$ is the \ours{} input dimension (Eq.~\ref{eq:dim}) for the axes named by the main oracle. NiSuz is an emulator built from 576 HTE reactions; its pool keeps only emulated conditions with valid predictions, so it is not a full Cartesian product.}
+\label{tab:tasks}
+\end{table*}

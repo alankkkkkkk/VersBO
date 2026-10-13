@@ -1,0 +1,1378 @@
+{
+ "tasks": [
+  "DA",
+  "DeoxyF",
+  "NSA",
+  "Boryl",
+  "Amide",
+  "RedAm",
+  "SuzC",
+  "ChanLam",
+  "NiSuz"
+ ],
+ "methods": [
+  "onehot",
+  "desc",
+  "lvgp",
+  "tabpfn",
+  "gollum",
+  "boicl",
+  "llmgo",
+  "lgbo",
+  "llmpref",
+  "caliper",
+  "tacit"
+ ],
+ "app_methods": [
+  "bochemian",
+  "lapeft",
+  "llambo",
+  "reelicit"
+ ],
+ "mean": {
+  "onehot": [
+   31.4,
+   28.7,
+   36.2,
+   33.5,
+   29.8,
+   24.1,
+   2.1,
+   41.3,
+   38.6
+  ],
+  "desc": [
+   18.2,
+   9.4,
+   22.4,
+   24.7,
+   21.5,
+   19.3,
+   1.8,
+   35.2,
+   27.4
+  ],
+  "lvgp": [
+   22.6,
+   19.8,
+   25.1,
+   27.3,
+   24.9,
+   17.2,
+   1.5,
+   36.8,
+   30.1
+  ],
+  "tabpfn": [
+   20.4,
+   17.3,
+   23.8,
+   25.9,
+   22.3,
+   18.6,
+   1.2,
+   34.1,
+   26.8
+  ],
+  "gollum": [
+   16.9,
+   15.2,
+   19.7,
+   22.8,
+   18.4,
+   21.7,
+   1.9,
+   33.6,
+   24.2
+  ],
+  "boicl": [
+   19.3,
+   18.4,
+   26.5,
+   23.1,
+   17.6,
+   20.8,
+   2.4,
+   30.9,
+   29.7
+  ],
+  "llmgo": [
+   14.8,
+   16.1,
+   21.3,
+   19.2,
+   12.4,
+   15.9,
+   0.9,
+   24.7,
+   33.8
+  ],
+  "lgbo": [
+   15.6,
+   13.4,
+   18.9,
+   20.6,
+   16.1,
+   16.4,
+   1.1,
+   29.3,
+   22.5
+  ],
+  "llmpref": [
+   14.1,
+   12.7,
+   20.2,
+   21.4,
+   15.3,
+   17.8,
+   1.4,
+   31.6,
+   23.9
+  ],
+  "caliper": [
+   15.9,
+   14.8,
+   19.4,
+   21.9,
+   16.7,
+   16.9,
+   1.3,
+   30.2,
+   23.1
+  ],
+  "tacit": [
+   8.3,
+   10.6,
+   11.2,
+   13.7,
+   9.8,
+   12.1,
+   0.8,
+   26.4,
+   14.6
+  ],
+  "bochemian": [
+   19.8,
+   17.9,
+   23.6,
+   25.4,
+   20.7,
+   22.9,
+   2.2,
+   35.1,
+   26.9
+  ],
+  "lapeft": [
+   18.4,
+   16.8,
+   22.1,
+   24.3,
+   19.9,
+   23.4,
+   2.0,
+   34.4,
+   26.1
+  ],
+  "llambo": [
+   20.6,
+   19.7,
+   27.4,
+   24.8,
+   18.9,
+   21.5,
+   2.6,
+   32.8,
+   31.2
+  ],
+  "reelicit": [
+   18.9,
+   16.3,
+   21.8,
+   23.9,
+   19.6,
+   19.4,
+   1.7,
+   33.0,
+   25.7
+  ]
+ },
+ "se": {
+  "onehot": [
+   3.69,
+   3.08,
+   5.03,
+   3.36,
+   1.72,
+   2.04,
+   0.24,
+   3.12,
+   3.64
+  ],
+  "desc": [
+   1.86,
+   1.01,
+   2.28,
+   2.47,
+   2.27,
+   1.95,
+   0.22,
+   3.32,
+   1.98
+  ],
+  "lvgp": [
+   1.88,
+   2.4,
+   3.55,
+   2.93,
+   2.5,
+   1.82,
+   0.17,
+   3.49,
+   2.22
+  ],
+  "tabpfn": [
+   1.92,
+   2.41,
+   3.09,
+   2.55,
+   2.82,
+   1.66,
+   0.14,
+   4.94,
+   1.94
+  ],
+  "gollum": [
+   1.94,
+   1.81,
+   3.71,
+   1.95,
+   1.19,
+   3.2,
+   0.19,
+   3.23,
+   2.31
+  ],
+  "boicl": [
+   2.5,
+   2.07,
+   3.32,
+   1.96,
+   1.83,
+   2.31,
+   0.22,
+   2.97,
+   2.2
+  ],
+  "llmgo": [
+   2.19,
+   2.72,
+   4.23,
+   2.29,
+   1.14,
+   1.66,
+   0.1,
+   2.2,
+   2.66
+  ],
+  "lgbo": [
+   2.03,
+   1.5,
+   3.43,
+   1.83,
+   1.69,
+   1.49,
+   0.12,
+   2.02,
+   2.24
+  ],
+  "llmpref": [
+   1.53,
+   1.82,
+   2.0,
+   2.61,
+   1.25,
+   1.63,
+   0.15,
+   3.21,
+   2.07
+  ],
+  "caliper": [
+   2.23,
+   1.44,
+   3.02,
+   2.25,
+   1.35,
+   1.87,
+   0.13,
+   2.94,
+   2.31
+  ],
+  "tacit": [
+   0.94,
+   0.99,
+   1.2,
+   1.45,
+   0.76,
+   1.2,
+   0.07,
+   3.1,
+   1.48
+  ],
+  "bochemian": [
+   1.82,
+   2.19,
+   3.18,
+   3.66,
+   1.7,
+   2.53,
+   0.26,
+   3.43,
+   1.95
+  ],
+  "lapeft": [
+   2.09,
+   1.78,
+   2.8,
+   2.82,
+   2.59,
+   2.24,
+   0.2,
+   2.87,
+   2.15
+  ],
+  "llambo": [
+   2.0,
+   2.44,
+   2.88,
+   2.44,
+   1.85,
+   1.8,
+   0.21,
+   4.58,
+   3.04
+  ],
+  "reelicit": [
+   1.64,
+   1.74,
+   3.41,
+   2.4,
+   1.91,
+   1.87,
+   0.22,
+   4.42,
+   2.02
+  ]
+ },
+ "rank": {
+  "onehot": [
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   10,
+   11,
+   11
+  ],
+  "desc": [
+   7,
+   1,
+   7,
+   8,
+   8,
+   8,
+   8,
+   9,
+   7
+  ],
+  "lvgp": [
+   10,
+   10,
+   9,
+   10,
+   10,
+   5,
+   7,
+   10,
+   9
+  ],
+  "tabpfn": [
+   9,
+   8,
+   8,
+   9,
+   9,
+   7,
+   4,
+   8,
+   6
+  ],
+  "gollum": [
+   6,
+   6,
+   4,
+   6,
+   7,
+   10,
+   9,
+   7,
+   5
+  ],
+  "boicl": [
+   8,
+   9,
+   10,
+   7,
+   6,
+   9,
+   11,
+   5,
+   8
+  ],
+  "llmgo": [
+   3,
+   7,
+   6,
+   2,
+   2,
+   2,
+   2,
+   1,
+   10
+  ],
+  "lgbo": [
+   4,
+   4,
+   2,
+   3,
+   4,
+   3,
+   3,
+   3,
+   2
+  ],
+  "llmpref": [
+   2,
+   3,
+   5,
+   4,
+   3,
+   6,
+   6,
+   6,
+   4
+  ],
+  "caliper": [
+   5,
+   5,
+   3,
+   5,
+   5,
+   4,
+   5,
+   4,
+   3
+  ],
+  "tacit": [
+   1,
+   2,
+   1,
+   1,
+   1,
+   1,
+   1,
+   2,
+   1
+  ]
+ },
+ "avg_rank": {
+  "onehot": 10.89,
+  "desc": 7.0,
+  "lvgp": 8.89,
+  "tabpfn": 7.56,
+  "gollum": 6.67,
+  "boicl": 8.11,
+  "llmgo": 3.89,
+  "lgbo": 3.11,
+  "llmpref": 4.33,
+  "caliper": 4.33,
+  "tacit": 1.22
+ },
+ "avg_rank15": {
+  "onehot": 14.67,
+  "desc": 8.78,
+  "lvgp": 11.78,
+  "tabpfn": 9.78,
+  "gollum": 7.22,
+  "boicl": 9.78,
+  "llmgo": 4.33,
+  "lgbo": 3.11,
+  "llmpref": 4.33,
+  "caliper": 4.33,
+  "tacit": 1.22,
+  "bochemian": 11.33,
+  "lapeft": 9.67,
+  "llambo": 11.67,
+  "reelicit": 8.0
+ },
+ "i1_task": {
+  "onehot": [
+   35.7,
+   36.9,
+   33.1,
+   31.8,
+   37.7,
+   33.3,
+   21.8,
+   27.5,
+   31.1
+  ],
+  "desc": [
+   25.8,
+   21.0,
+   22.9,
+   24.1,
+   27.6,
+   26.6,
+   16.4,
+   20.1,
+   21.8
+  ],
+  "lvgp": [
+   31.3,
+   31.0,
+   27.5,
+   27.9,
+   30.1,
+   27.5,
+   17.7,
+   24.1,
+   28.0
+  ],
+  "tabpfn": [
+   28.7,
+   28.3,
+   25.0,
+   26.1,
+   26.2,
+   26.7,
+   16.1,
+   20.7,
+   21.4
+  ],
+  "gollum": [
+   23.3,
+   25.0,
+   20.5,
+   21.4,
+   21.9,
+   26.1,
+   15.6,
+   18.6,
+   19.5
+  ],
+  "boicl": [
+   24.4,
+   26.2,
+   24.1,
+   19.9,
+   22.3,
+   24.5,
+   16.8,
+   17.0,
+   20.5
+  ],
+  "llmgo": [
+   15.1,
+   19.2,
+   12.4,
+   11.5,
+   12.2,
+   13.6,
+   8.5,
+   9.9,
+   18.8
+  ],
+  "lgbo": [
+   21.3,
+   20.1,
+   16.3,
+   17.4,
+   19.3,
+   20.0,
+   12.9,
+   13.6,
+   15.2
+  ],
+  "llmpref": [
+   18.3,
+   20.9,
+   19.5,
+   19.9,
+   19.0,
+   20.2,
+   12.3,
+   15.6,
+   16.7
+  ],
+  "caliper": [
+   21.8,
+   23.1,
+   18.2,
+   19.3,
+   19.5,
+   22.0,
+   12.6,
+   16.9,
+   16.7
+  ],
+  "tacit": [
+   10.8,
+   11.7,
+   10.3,
+   9.7,
+   10.5,
+   12.8,
+   8.6,
+   10.4,
+   8.2
+  ],
+  "bochemian": [
+   26.3,
+   27.4,
+   24.2,
+   23.2,
+   26.9,
+   28.7,
+   16.4,
+   20.7,
+   21.3
+  ],
+  "lapeft": [
+   24.0,
+   25.8,
+   22.3,
+   24.1,
+   25.8,
+   29.2,
+   15.5,
+   20.2,
+   20.5
+  ],
+  "llambo": [
+   25.4,
+   28.9,
+   26.3,
+   23.2,
+   22.7,
+   25.8,
+   17.6,
+   19.3,
+   22.1
+  ],
+  "reelicit": [
+   23.7,
+   25.3,
+   21.2,
+   22.2,
+   24.6,
+   25.2,
+   14.7,
+   18.2,
+   19.7
+  ]
+ },
+ "i1_avg": {
+  "onehot": 32.1,
+  "desc": 22.9,
+  "lvgp": 27.2,
+  "tabpfn": 24.3,
+  "gollum": 21.3,
+  "boicl": 21.7,
+  "llmgo": 13.4,
+  "lgbo": 17.3,
+  "llmpref": 18.0,
+  "caliper": 18.9,
+  "tacit": 10.3,
+  "bochemian": 23.9,
+  "lapeft": 23.0,
+  "llambo": 23.5,
+  "reelicit": 21.6
+ },
+ "best_baseline_by_rank": "lgbo",
+ "fastest_baseline": "llmgo",
+ "i1_reduction_pct": 23,
+ "i1_reduction_rank_pct": 40,
+ "tests": [
+  {
+   "task": "DA",
+   "runner": "llmpref",
+   "p": 2.6702880859375e-05,
+   "tacit_better": true,
+   "p_holm": 0.000240325927734375
+  },
+  {
+   "task": "DeoxyF",
+   "runner": "desc",
+   "p": 0.3117942810058594,
+   "tacit_better": false,
+   "p_holm": 0.9353828430175781
+  },
+  {
+   "task": "NSA",
+   "runner": "lgbo",
+   "p": 0.0005855560302734375,
+   "tacit_better": true,
+   "p_holm": 0.0040988922119140625
+  },
+  {
+   "task": "Boryl",
+   "runner": "llmgo",
+   "p": 0.01068878173828125,
+   "tacit_better": true,
+   "p_holm": 0.0641326904296875
+  },
+  {
+   "task": "Amide",
+   "runner": "llmgo",
+   "p": 0.0758514404296875,
+   "tacit_better": true,
+   "p_holm": 0.30340576171875
+  },
+  {
+   "task": "RedAm",
+   "runner": "llmgo",
+   "p": 0.012079238891601562,
+   "tacit_better": true,
+   "p_holm": 0.0641326904296875
+  },
+  {
+   "task": "SuzC",
+   "runner": "llmgo",
+   "p": 0.5705966949462891,
+   "tacit_better": true,
+   "p_holm": 1.0
+  },
+  {
+   "task": "ChanLam",
+   "runner": "llmgo",
+   "p": 0.5958194732666016,
+   "tacit_better": false,
+   "p_holm": 1.0
+  },
+  {
+   "task": "NiSuz",
+   "runner": "lgbo",
+   "p": 0.0001678466796875,
+   "tacit_better": true,
+   "p_holm": 0.0013427734375
+  }
+ ],
+ "n_sig_wins": 3,
+ "n_wins": 7,
+ "sig_win_tasks": [
+  "DA",
+  "NSA",
+  "NiSuz"
+ ],
+ "nonsig_tasks": [
+  "DeoxyF",
+  "Boryl",
+  "Amide",
+  "RedAm",
+  "SuzC",
+  "ChanLam"
+ ],
+ "all_mean": {
+  "onehot": 29.5,
+  "desc": 20.0,
+  "lvgp": 22.8,
+  "tabpfn": 21.2,
+  "gollum": 19.4,
+  "boicl": 21.0,
+  "llmgo": 17.7,
+  "lgbo": 17.1,
+  "llmpref": 17.6,
+  "caliper": 17.8,
+  "tacit": 11.9,
+  "bochemian": 21.6,
+  "lapeft": 20.8,
+  "llambo": 22.2,
+  "reelicit": 20.0
+ },
+ "groupA_mean": {
+  "onehot": 32.5,
+  "desc": 18.7,
+  "lvgp": 23.7,
+  "tabpfn": 21.9,
+  "gollum": 18.7,
+  "boicl": 21.8,
+  "llmgo": 17.9,
+  "lgbo": 17.1,
+  "llmpref": 17.1,
+  "caliper": 18.0,
+  "tacit": 11.0
+ },
+ "post_mean": {
+  "onehot": 35.6,
+  "desc": 28.4,
+  "lvgp": 30.9,
+  "tabpfn": 28.2,
+  "gollum": 26.0,
+  "boicl": 24.3,
+  "llmgo": 18.6,
+  "lgbo": 22.7,
+  "llmpref": 23.5,
+  "caliper": 23.5,
+  "tacit": 18.1
+ },
+ "robust": {
+  "lvgp": [
+   23.7,
+   23.7,
+   null,
+   null,
+   30.9
+  ],
+  "llmgo": [
+   17.9,
+   38.2,
+   null,
+   22.6,
+   18.6
+  ],
+  "boicl": [
+   21.8,
+   31.5,
+   null,
+   24.9,
+   24.3
+  ],
+  "lgbo": [
+   17.1,
+   29.8,
+   34.6,
+   19.8,
+   22.7
+  ],
+  "llmpref": [
+   17.1,
+   33.4,
+   37.9,
+   18.4,
+   23.5
+  ],
+  "caliper": [
+   18.0,
+   26.1,
+   25.3,
+   19.1,
+   23.5
+  ],
+  "tacit_fixed": [
+   11.6,
+   41.7,
+   45.2,
+   12.0,
+   19.4
+  ],
+  "tacit": [
+   11.0,
+   24.4,
+   24.0,
+   12.3,
+   18.1
+  ]
+ },
+ "onehot_groupA": 32.5,
+ "ablations": [
+  {
+   "key": "full",
+   "label": "\\ours{} (full)",
+   "orig": 11.9,
+   "cf": 24.4
+  },
+  {
+   "key": "A1",
+   "label": "A1\\enspace ratings instead of comparisons",
+   "orig": 17.2,
+   "cf": 27.9
+  },
+  {
+   "key": "A2",
+   "label": "A2\\enspace $\\lambda$ fixed large",
+   "orig": 12.4,
+   "cf": 41.7
+  },
+  {
+   "key": "A3",
+   "label": "A3\\enspace $\\lambda$ fixed at 0 (= LVGP)",
+   "orig": 22.8,
+   "cf": 23.7
+  },
+  {
+   "key": "A4",
+   "label": "A4\\enspace no free dimensions ($R{=}0$)",
+   "orig": 14.6,
+   "cf": 35.8
+  },
+  {
+   "key": "A5",
+   "label": "A5\\enspace MAP coordinates only",
+   "orig": 14.1,
+   "cf": 26.9
+  },
+  {
+   "key": "A6",
+   "label": "A6\\enspace random comparisons",
+   "orig": 15.3,
+   "cf": 24.9
+  },
+  {
+   "key": "A7",
+   "label": "A7\\enspace no axis discovery",
+   "orig": 12.8,
+   "cf": 24.6
+  },
+  {
+   "key": "A8",
+   "label": "A8\\enspace unnamed similarity queries",
+   "orig": 16.4,
+   "cf": 25.8
+  },
+  {
+   "key": "A9",
+   "label": "A9\\enspace numeric values in prompts",
+   "orig": 12.6,
+   "cf": 24.5
+  },
+  {
+   "key": "A10",
+   "label": "A10\\enspace repeats as independent",
+   "orig": 12.2,
+   "cf": 26.3
+  }
+ ],
+ "sensitivity": {
+  "Kmax": {
+   "values": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "regret": [
+    14.0,
+    12.5,
+    11.9,
+    12.4
+   ]
+  },
+  "R": {
+   "values": [
+    0,
+    1,
+    2,
+    4
+   ],
+   "regret": [
+    14.6,
+    12.2,
+    11.9,
+    12.3
+   ]
+  },
+  "m": {
+   "values": [
+    2,
+    4,
+    8,
+    16
+   ],
+   "regret": [
+    13.4,
+    12.3,
+    11.9,
+    11.8
+   ]
+  },
+  "oracle": {
+   "Gemma-4-12B": 13.8,
+   "GPT-5": 11.2
+  },
+  "prompt_sd": {
+   "tacit": 0.7,
+   "llmgo": 3.9
+  },
+  "nuts": {
+   "regret": 11.6,
+   "time_factor": 9
+  }
+ },
+ "surrogate": {
+  "desc": [
+   1.42,
+   1.21,
+   0.18,
+   0.31
+  ],
+  "lvgp": [
+   1.58,
+   1.3,
+   0.09,
+   0.24
+  ],
+  "gollum": [
+   1.47,
+   1.19,
+   0.16,
+   0.33
+  ],
+  "boicl": [
+   1.71,
+   1.52,
+   0.21,
+   0.29
+  ],
+  "tacit": [
+   1.24,
+   1.08,
+   0.34,
+   0.42
+  ]
+ },
+ "cost": [
+  [
+   "llambo",
+   3.4,
+   "2 CPU-min"
+  ],
+  [
+   "boicl",
+   2.6,
+   "2 CPU-min"
+  ],
+  [
+   "llmgo",
+   1.9,
+   "--"
+  ],
+  [
+   "lgbo",
+   0.8,
+   "3 CPU-min"
+  ],
+  [
+   "caliper",
+   0.6,
+   "3 CPU-min"
+  ],
+  [
+   "llmpref",
+   0.15,
+   "2 CPU-min"
+  ],
+  [
+   "gollum",
+   null,
+   "1.1 GPU-h (H100)"
+  ],
+  [
+   "tacit",
+   0.09,
+   "4 CPU-min"
+  ]
+ ],
+ "tacit_queries": 212,
+ "tacit_repeats": 2,
+ "random_query_factor": 3.2,
+ "token_ratio": {
+  "llmgo": 21.1,
+  "boicl": 28.9,
+  "llambo": 37.8
+ },
+ "rq0_llm": [
+  [
+   "Gemma-4-12B",
+   0.74,
+   0.61,
+   0.12
+  ],
+  [
+   "Qwen3.6-35B-A3B",
+   0.81,
+   0.65,
+   0.21
+  ],
+  [
+   "gpt-oss-120b",
+   0.83,
+   0.67,
+   0.24
+  ],
+  [
+   "DeepSeek-V4-Flash",
+   0.84,
+   0.68,
+   0.26
+  ],
+  [
+   "GPT-5",
+   0.87,
+   0.71,
+   0.31
+  ]
+ ],
+ "rq0_avg": [
+  0.82,
+  0.66,
+  0.23
+ ],
+ "rq0_prop": [
+  [
+   "DA",
+   "ligand",
+   "steric bulk",
+   "\\%$V_\\mathrm{bur}$",
+   0.66,
+   "steric"
+  ],
+  [
+   "DA",
+   "ligand",
+   "$\\sigma$-donor strength",
+   "HOMO energy",
+   0.8,
+   "electronic"
+  ],
+  [
+   "DA",
+   "base",
+   "basicity",
+   "p$K_\\mathrm{a}$(H)",
+   0.94,
+   "acid-base"
+  ],
+  [
+   "DA",
+   "solvent",
+   "polarity",
+   "dielectric const.",
+   0.92,
+   "medium"
+  ],
+  [
+   "DeoxyF",
+   "alcohol",
+   "steric hindrance",
+   "\\%$V_\\mathrm{bur}$ (C$_\\alpha$)",
+   0.72,
+   "steric"
+  ],
+  [
+   "DeoxyF",
+   "sulfonyl fluoride",
+   "electrophilicity",
+   "LUMO energy",
+   0.82,
+   "electronic"
+  ],
+  [
+   "DeoxyF",
+   "base",
+   "basicity",
+   "p$K_\\mathrm{a}$(H), MeCN",
+   0.93,
+   "acid-base"
+  ],
+  [
+   "NSA",
+   "catalyst",
+   "3,3$'$-substituent bulk",
+   "\\%$V_\\mathrm{bur}$",
+   0.67,
+   "steric"
+  ],
+  [
+   "NSA",
+   "catalyst",
+   "Br{\\o}nsted acidity",
+   "p$K_\\mathrm{a}$",
+   0.91,
+   "acid-base"
+  ],
+  [
+   "NSA",
+   "imine",
+   "electrophilicity",
+   "LUMO energy",
+   0.81,
+   "electronic"
+  ],
+  [
+   "Boryl",
+   "ligand",
+   "steric bulk",
+   "\\%$V_\\mathrm{bur}$",
+   0.7,
+   "steric"
+  ],
+  [
+   "Boryl",
+   "aryl electrophile",
+   "C--X electrophilicity",
+   "LUMO energy",
+   0.84,
+   "electronic"
+  ]
+ ],
+ "rq0_prop_mean": 0.81,
+ "rq0_steric": 0.69,
+ "rq0_acid-base": 0.93,
+ "rq0_electronic": 0.82,
+ "rating_compression_pct": 41,
+ "axis_rho": {
+  "tacit": 0.71,
+  "tacit_fixed": 0.64,
+  "lvgp_rot": 0.36
+ },
+ "discovery_fired": 5,
+ "discovered": [
+  [
+   "DA",
+   "base",
+   "Cs$^+$ vs.\\ K$^+$ carboxylates",
+   "cation solubility in the solvent",
+   1.6
+  ],
+  [
+   "NSA",
+   "catalyst",
+   "extended vs.\\ simple 3,3$'$-aryls",
+   "3,3$'$-aryl $\\pi$-surface",
+   1.2
+  ],
+  [
+   "Boryl",
+   "ligand",
+   "bidentate vs.\\ monodentate",
+   "chelation (denticity)",
+   0.9
+  ],
+  [
+   "ChanLam",
+   "Cu source",
+   "Cu(OAc)$_2$ vs.\\ Cu(OTf)$_2$",
+   "counter-anion basicity",
+   1.3
+  ],
+  [
+   "NiSuz",
+   "additive",
+   "salts vs.\\ none",
+   "Lewis acidity of additive",
+   0.2
+  ]
+ ],
+ "task_table": [
+  [
+   "DA",
+   "Direct arylation",
+   "yield",
+   "1,728",
+   "ligand (12), base (4), solvent (4)",
+   "$T$, conc.",
+   12,
+   "A"
+  ],
+  [
+   "DeoxyF",
+   "Deoxyfluorination",
+   "yield",
+   "740",
+   "alcohol (37), RSO$_2$F (5), base (4)",
+   "--",
+   10,
+   "A"
+  ],
+  [
+   "NSA",
+   "CPA $N$,$S$-acetal formation",
+   "$\\Delta\\Delta G^{\\ddagger}$",
+   "1,075",
+   "catalyst (43), imine (5), thiol (5)",
+   "--",
+   10,
+   "A"
+  ],
+  [
+   "Boryl",
+   "Ni-cat. borylation",
+   "yield",
+   "1,518",
+   "Ar--X (33), ligand (23), solvent (2)",
+   "--",
+   9,
+   "A"
+  ],
+  [
+   "Amide",
+   "Amide coupling",
+   "yield",
+   "648",
+   "acid (3), amine (3), conditions (72)",
+   "--",
+   8,
+   "B"
+  ],
+  [
+   "RedAm",
+   "Reductive amination",
+   "conversion",
+   "768",
+   "substrate (16), solvent (2)",
+   "3",
+   8,
+   "B"
+  ],
+  [
+   "SuzC",
+   "Suzuki--Miyaura",
+   "conversion",
+   "960",
+   "Ar--X (8), boronate (10), conditions (12)",
+   "--",
+   12,
+   "B"
+  ],
+  [
+   "ChanLam",
+   "Chan--Lam coupling",
+   "wtd.\\ selectivity",
+   "1,920",
+   "RSO$_2$NH$_2$ (10), ArB(OH)$_2$ (2), Cu (4), solvent (4), base (6)",
+   "--",
+   14,
+   "B"
+  ],
+  [
+   "NiSuz",
+   "Ni-cat. Suzuki (emulated)",
+   "yield",
+   "87,203",
+   "ligand, base, solvent, additive",
+   "--",
+   13,
+   "C"
+  ]
+ ],
+ "lambda_cf_cross_iter": 14,
+ "lambda_orig_final": {
+  "ligand: steric bulk": 0.9,
+  "ligand: $\\sigma$-donor strength": 1.6,
+  "base: basicity": 2.7,
+  "solvent: polarity": 1.8,
+  "base: cation solubility (discovered)": 1.6
+ }
+}

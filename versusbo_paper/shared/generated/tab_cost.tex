@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}l r l@{}}
+\toprule
+Method & LLM tokens & Other compute \\
+\midrule
+LLAMBO & 3.4M & 2 CPU-min \\
+BO-ICL & 2.6M & 2 CPU-min \\
+LLM-GO & 1.9M & -- \\
+LGBO & 0.8M & 3 CPU-min \\
+CALIPER & 0.6M & 3 CPU-min \\
+LLM-Pref & 0.15M & 2 CPU-min \\
+GOLLuM & -- & 1.1 GPU-h (H100) \\
+\rowcolor{tacitrow}
+\ours{} & \textbf{0.09M} & 4 CPU-min \\
+\bottomrule
+\end{tabular}
+\caption{Cost of one 40-iteration campaign on DA with the main oracle (input plus output tokens), mean over seeds. GOLLuM finetunes its own encoder and queries no generative model.}
+\label{tab:cost}
+\end{table}

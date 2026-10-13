@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}l cc cc@{}}
+\toprule
+ & \multicolumn{2}{c}{NLPD\,$\downarrow$} & \multicolumn{2}{c}{Top-decile $\rho$\,$\uparrow$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Surrogate & $n{=}10$ & $n{=}20$ & $n{=}10$ & $n{=}20$ \\
+\midrule
+GP, descriptors & 1.42 & 1.21 & 0.18 & 0.31 \\
+LVGP & 1.58 & 1.30 & 0.09 & 0.24 \\
+GOLLuM & 1.47 & 1.19 & 0.16 & 0.33 \\
+BO-ICL & 1.71 & 1.52 & 0.21 & 0.29 \\
+\rowcolor{tacitrow}
+\ours{} & \textbf{1.24} & \textbf{1.08} & \textbf{0.34} & \textbf{0.42} \\
+\bottomrule
+\end{tabular}
+\caption{Surrogate quality on Group A from $n$ random experiments, averaged over 20 splits. NLPD: negative log predictive density on the rest of the pool; top-decile $\rho$: Spearman correlation on the best 10\% of the pool.}
+\label{tab:surrogate}
+\end{table}

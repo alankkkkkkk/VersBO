@@ -1,0 +1,4 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+Existing methods ask LLMs for absolute numbers about experiments. We asked for comparisons between reagents along named properties and found them more accurate on every model we tried. \ours{} turns those comparisons into evidence about latent reagent coordinates, learns from the experiments how far to trust each property, and spends LLM calls only where an answer could change the next experiment. On nine reaction optimization tasks it found good conditions in fewer experiments than fourteen baselines, fell back to a knowledge-free GP when the LLM's chemistry was made wrong, and named axes that track measured physical properties. The recipe applies wherever an expensive search runs over discrete choices that a language model can describe, such as materials precursors, buffer components or software configurations.

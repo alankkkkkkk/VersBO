@@ -1,0 +1,126 @@
+\section{Prompts}
+\label{app:prompts}
+
+All prompts use the chat template of the model. Fields in braces are filled per query; the system message is ``You are an expert synthetic chemist. Answer briefly.''
+
+\begin{promptbox}{A.1 Naming axes}
+Reaction class: \{reaction\}. Role of the factor: \{role\}.\\
+Reagents (name; SMILES): \{list\}.\\
+List up to three properties that every reagent above has, that can be ordered from less to more, and that a chemist would expect to change the outcome of this reaction. Give one short noun phrase per line.
+\end{promptbox}
+
+\begin{promptbox}{A.2 Merging synonyms}
+Here are property names proposed for the same reagents: \{names\}. Group names that describe the same property, and return one name per group.
+\end{promptbox}
+
+\begin{promptbox}{A.3 Comparison (asked in both orders)}
+Reaction class: \{reaction\}. Property: \{property\}.\\
+Reagent 1: \{name$_a$\} (\{SMILES$_a$\}). Reagent 2: \{name$_b$\} (\{SMILES$_b$\}).\\
+Which reagent has more \{property\}? Answer ``1'', ``2'' or ``about equal''.
+\end{promptbox}
+
+\begin{promptbox}{A.4 Rating probe (\S\ref{sec:analysis} only)}
+Reaction class: \{reaction\}. Property: \{property\}. Reagent: \{name\} (\{SMILES\}).\\
+Rate the \{property\} of this reagent among typical \{role\}s on a scale from 1 (least) to 10 (most). Answer with one integer.
+\end{promptbox}
+
+\begin{promptbox}{A.5 Axis discovery}
+Reaction class: \{reaction\}. Role of the factor: \{role\}.\\
+Group 1: \{three reagents\}. Group 2: \{three reagents\}.\\
+Name one property, other than \{existing axes\}, that is high for Group 1 and low for Group 2. Give one short noun phrase.
+\end{promptbox}
+
+For the \emph{no-context} test (\S\ref{sec:robust}) we replace the reaction class with ``a chemical reaction'' and the role with ``reagent'', and drop all names, keeping SMILES only.
+
+\section{Proofs}
+\label{app:proofs}
+
+\paragraph{Proposition~\ref{prop:reduction}.}
+With $\lambda_k=0$, Eq.~\eqref{eq:probit} gives $p(o{=}a\mid z,\eta_q)=\Phi(\eta_q-\tau)$ and $p(o{=}b\mid z,\eta_q)=\Phi(-\eta_q-\tau)$, neither of which depends on $z$. Integrating over $\eta_q$ yields a likelihood for the answers to $q$ that depends on $(\tau,\sigma_\eta)$ only. The product over $q\in\Cset$ is therefore a constant in $(z,\theta)$, and Eq.~\eqref{eq:posterior} reduces to $p(y\mid z,\theta)\,p(z)\,p(\theta)$, the LVGP posterior under the same prior and parameterization of $z$. Because the comparison likelihood is continuous in $\lambda$, the conditional posterior over $(z,\theta)$ given $\lambda$ converges to the LVGP posterior as $\lambda\to0$, and so does the marginal posterior when the posterior of $\lambda$ concentrates at zero. \qed
+
+\paragraph{Proposition~\ref{prop:consistency}: assumptions.}
+(A1) There are coordinates $z^\ast$ and a function $g$ in the RKHS of $k_\theta$ such that $f=g\circ\phi_{z^\ast}$; after standardizing named axes and pinning one free coordinate per factor, $z^\ast$ is unique up to rotations of the free coordinates within each factor and reflections of each named axis. (A2) Every reagent is tested infinitely often as $T\to\infty$, the numeric inputs are dense in a compact set, and $\theta$ is identified from the observed pairs. (A3) Given $z^\ast$ and the query effects $\{\eta_q\}$, answers to distinct queries are independent and follow Eq.~\eqref{eq:probit} at some $(\lambda_k^\ast,\tau^\ast,\sigma_\eta^\ast)$. (A4) Each query is answered $r\ge2$ times, and the empirical variance of the differences $\Delta_q$ queried on axis $k$ stays bounded away from zero.
+
+\paragraph{Proof sketch.}
+The argument has two stages. \emph{Stage 1.} Under (A1)--(A2), standard posterior consistency for GP regression with a correctly specified mean function implies that the posterior over $z$ concentrates on the equivalence class of $z^\ast$ described in (A1). Rotations of free coordinates leave both likelihoods unchanged and do not involve $\lambda$. A reflection of named axis $k$ leaves the GP likelihood unchanged; under the constraint $\lambda_k\ge0$ the comparison likelihood selects the orientation in which the property increases along the axis whenever $\lambda_k^\ast>0$, and is invariant to it when $\lambda_k^\ast=0$. \emph{Stage 2.} For $z$ in a neighborhood $B_\delta$ of the class of $z^\ast$, the answers on axis $k$ follow an ordered-probit model with a random intercept per query, known covariates $\Delta_q(z)$ and unknown slope $\lambda_k$. With clusters of size $r\ge2$ the slope, thresholds and random-effect scale are identified, and (A4) keeps the design non-degenerate, so the posterior of $\lambda_k$ given $z\in B_\delta$ concentrates at $\lambda_k^\ast$ as the number of distinct queries grows; continuity of Eq.~\eqref{eq:probit} in $\Delta$ makes this uniform over $B_\delta$ up to an error that vanishes with $\delta$. Combining the stages, $\Pr(|\lambda_k-\lambda_k^\ast|>\epsilon\mid\D,\Cset)\le\Pr(z\notin B_\delta\mid\D,\Cset)+\sup_{z\in B_\delta}\Pr(|\lambda_k-\lambda_k^\ast|>\epsilon\mid z,\D,\Cset)$, and both terms vanish. If the answers do not depend on $z^\ast$ along axis $k$, the slope that generates them is zero, so $\lambda_k^\ast=0$. \qed
+
+\paragraph{Why standardization is needed.}
+For $c>0$, replace $z_{\cdot,k}$ by $c\,z_{\cdot,k}$, the ARD length scale $\ell_k$ by $c\,\ell_k$ and $\lambda_k$ by $\lambda_k/c$. The kernel depends on $z_{\cdot,k}/\ell_k$ and the probit on $\lambda_k\Delta_q$, so both likelihoods are unchanged, and $\lambda_k$ is not identified without fixing the scale of the axis. Unit variance over the reagents of a factor fixes it.
+
+\paragraph{Remark (dimension and regret).}
+Regret bounds for GP bandits grow with the maximal information gain of the kernel, $\tilde O(T^{d/(2\nu+d)})$ for Mat\'ern-$\nu$ kernels on $d$ inputs \citep{vakili2021information}. Eq.~\eqref{eq:dim} keeps $d$ between 8 and 14, whereas embedding-based surrogates work with $d$ between 768 and 4096. Coordinate error $\varepsilon$ adds a term linear in $\varepsilon T$ \citep{bogunovic2021misspecified}; comparisons reduce $\varepsilon$ for the reagents they touch, and \S\ref{sec:queries} directs them to the reagents that matter for the next decision.
+
+\section{Datasets}
+\label{app:data}
+
+\input{../shared/generated/tab_tasks.tex}
+
+\paragraph{Sources and preprocessing.}
+Group A tasks follow the pools of the original publications; Boryl uses the 33 aryl electrophiles, 23 ligands and 2 solvents curated by \citet{schmid2025general} from \citet{stevens2022borylation}. Amide keeps three acids, three amines and the 72 condition sets that were run for all nine substrate pairs in \citet{zhang2025amide}. NiSuz is the emulator released with \citet{schlama2025swarm}, which keeps only conditions with valid predictions; its pool is therefore not a full Cartesian product. Objectives are maximized; for NSA we maximize $\Delta\Delta G^{\ddagger}$.
+
+\paragraph{Descriptor pairing for the analysis.}
+Table~\ref{tab:rq0prop} lists the 12 property--descriptor pairs used in \S\ref{sec:analysis}. Pairs of reagents whose descriptor values differ by less than 2\% of the descriptor's range are excluded as ties.
+
+\input{../shared/generated/tab_rq0prop.tex}
+
+\paragraph{Counterfactual and inverted tests.}
+For the counterfactual test we draw, per factor and seed, a random permutation $\pi_j$ of $E_j$, and give each experiment the outcome of the experiment whose $j$-th reagent is $\pi_j(e_j)$ for every $j$, with the same numeric settings. This keeps the outcome distribution and the interaction structure of the pool, and a method that ignores reagent identity faces the same task. The inverted test maps every comparison answer $a\leftrightarrow b$ and, for preference-based baselines, reverses every preference.
+
+\paragraph{Recent split.}
+For Amide and ChanLam we ask the main oracle, with the full reaction description, to name the five best conditions. Their mean percentile in the pool is 47 for Amide and 55 for ChanLam, close to the 50 expected by chance.
+
+\section{Additional Results}
+\label{app:results}
+
+\input{../shared/generated/tab_se.tex}
+\input{../shared/generated/tab_i1.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{\figdir/figA_curves_all.pdf}
+\caption{Best-so-far normalized regret on all nine tasks (log scale; mean $\pm$ standard error over 20 seeds).}
+\label{fig:allcurves}
+\end{figure*}
+
+\input{../shared/generated/tab_rq0.tex}
+\input{../shared/generated/tab_surrogate.tex}
+\input{../shared/generated/tab_cost.tex}
+\input{../shared/generated/tab_discovered.tex}
+
+\paragraph{Sensitivity.}
+All-task regret for $\Kmax\in\{1,2,3,5\}$ is 14.0, 12.5, 11.9 and 12.4; for $R\in\{0,1,2,4\}$ it is 14.6, 12.2, 11.9 and 12.3 ($R=0$ is ablation A4); and for $m\in\{2,4,8,16\}$ queries per iteration it is 13.4, 12.3, 11.9 and 11.8. Replacing the main oracle with Gemma-4-12B gives 13.8 and with GPT-5 gives 11.2. Across three paraphrased prompt templates, the standard deviation of the all-task mean is 0.7 for \ours{} and 3.9 for LLM-GO. NUTS in place of the Laplace approximation gives 11.6 at nine times the wall-clock time.
+
+\paragraph{Batch setting.}
+With batches of $q=8$ and five rounds (40 experiments), the all-task mean regret is 13.0 for \ours{}, 18.2 for LGBO, 20.6 for GOLLuM and 24.1 for LVGP. \ours{} selects the batch greedily with the joint qLogNEI of Eq.~\eqref{eq:acq} and asks comparisons once per round.
+
+\paragraph{Cross-domain check.}
+On the hybrid perovskite band-gap task distributed with Olympus \citep{hase2021olympus}, whose factors are an organic cation, a metal cation and a halide, \ours{} reaches a regret of 9.1 after 40 iterations, against 12.6 for LGBO, 13.2 for GOLLuM and 15.8 for LVGP. The oracle named \emph{ionic radius} for both cation factors and \emph{electronegativity} for the halide.
+
+\section{Implementation}
+\label{app:impl}
+
+\begin{algorithm}[t]
+\caption{\ours{}}
+\label{alg:tacit}
+\small
+\begin{algorithmic}[1]
+\Require pool $\X$, initial data $\D$, budget $T$, oracle
+\State name axes for each factor (Prompts A.1, A.2); set $\Cset\gets$ answers to 16 random comparisons
+\For{$t=1,\dots,T$}
+  \State fit Eq.~\eqref{eq:posterior} on $(\D,\Cset)$; draw $S$ Laplace samples
+  \State score candidate queries by Eq.~\eqref{eq:info}; if the best exceeds $\epsilon$, ask the top $m$ in both orders, add them to $\Cset$ and refit
+  \State $x_t\gets\argmax_{x\in\X\setminus\D}\alpha(x)$ (Eq.~\eqref{eq:acq}); run $x_t$; $\D\gets\D\cup\{(x_t,y_t)\}$
+  \If{$t \bmod \Delta = 0$} test free dimensions and name new axes (\S\ref{sec:discovery}) \EndIf
+\EndFor
+\State \Return the best observed experiment
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Model and inference.}
+The kernel is Mat\'ern-5/2 with ARD over all $d$ inputs, a Gamma$(3,6)$ prior on length scales and a constant mean. Named coordinates are parameterized by unconstrained vectors that are centered and scaled per axis; free coordinates have prior $\Normal(0,0.3^2)$. The tie threshold has prior $\HN(0.5)$ and the query-effect scale $\HN(1)$. The joint mode is found with L-BFGS from the previous mode and from five random restarts; the Laplace covariance uses the exact Hessian of the log posterior in $(z,\log\lambda,\log\tau,\log\sigma_\eta)$, computed with automatic differentiation. One iteration takes about six seconds on 16 CPU cores, of which the query scoring takes two.
+
+\paragraph{Baselines.}
+All GP baselines share the kernel, priors and acquisition of \ours{}. LLM-based baselines use the hyperparameters of their papers and the main oracle at the decoding settings below; we tuned only the number of in-context examples for BO-ICL and LLAMBO on DA and kept it fixed elsewhere. ReElicit was designed for system prompts; we adapt it by letting the LLM define reagent features from the same naming prompt as \ours{}, with the features entering a GP as fixed inputs.
+
+\paragraph{LLM versions and decoding.}
+The open-weight models (Qwen3.6-35B-A3B, gpt-oss-120b, Gemma-4-12B) run with vLLM in bf16 on one H100. DeepSeek-V4-Flash and GPT-5 were accessed through their providers' APIs in September 2026. Naming and comparison prompts use temperature 0 and at most 16 output tokens; the budget-matched rating probe samples at temperature 0.7. Reasoning modes are disabled where a model offers the choice.

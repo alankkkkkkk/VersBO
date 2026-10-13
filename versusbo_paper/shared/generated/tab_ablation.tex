@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}l cc@{}}
+\toprule
+Variant & All, orig. & A, counterf. \\
+\midrule
+\rowcolor{tacitrow}
+\ours{} (full) & \textbf{11.9} & 24.4 \\
+\midrule
+A1\enspace ratings instead of comparisons & 17.2 & 27.9 \\
+A2\enspace $\lambda$ fixed large & 12.4 & 41.7 \\
+A3\enspace $\lambda$ fixed at 0 (= LVGP) & 22.8 & 23.7 \\
+A4\enspace no free dimensions ($R{=}0$) & 14.6 & 35.8 \\
+A5\enspace MAP coordinates only & 14.1 & 26.9 \\
+A6\enspace random comparisons & 15.3 & 24.9 \\
+A7\enspace no axis discovery & 12.8 & 24.6 \\
+A8\enspace unnamed similarity queries & 16.4 & 25.8 \\
+A9\enspace numeric values in prompts & 12.6 & 24.5 \\
+A10\enspace repeats as independent & 12.2 & 26.3 \\
+\bottomrule
+\end{tabular}
+\caption{Ablations: regret ($\times 100$) averaged over all nine tasks with the original oracle, and over Group A with the counterfactual oracle (\S\ref{sec:robust}). Each row changes one component.}
+\label{tab:ablation}
+\end{table}

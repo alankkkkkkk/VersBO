@@ -1,0 +1,26 @@
+% Shared TikZ styles for the manuscript figures.
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.misc,decorations.pathreplacing}
+\definecolor{tRed}{HTML}{D6393B}
+\definecolor{tBlue}{HTML}{2A78D6}
+\definecolor{tViolet}{HTML}{4A3AA7}
+\definecolor{tAqua}{HTML}{1BAF7A}
+\definecolor{tYellow}{HTML}{EDA100}
+\definecolor{tInk}{HTML}{1F1F1D}
+\definecolor{tMuted}{HTML}{6B6A66}
+\definecolor{tLine}{HTML}{BDBAB2}
+\definecolor{tPaper}{HTML}{F6F4EF}
+\definecolor{tRedTint}{HTML}{FBECEB}
+\definecolor{tVioTint}{HTML}{EEECF8}
+\definecolor{tBlueTint}{HTML}{EAF2FC}
+\tikzset{
+  tbox/.style={draw=tLine, line width=0.5pt, rounded corners=3pt, fill=white},
+  tttl/.style={font=\bfseries\fontsize{7.4}{8}\selectfont, text=tInk, anchor=north west, inner sep=0pt},
+  ttxt/.style={font=\fontsize{6.6}{7.8}\selectfont, text=tInk, inner sep=0pt},
+  tmut/.style={font=\itshape\fontsize{6.1}{7.2}\selectfont, text=tMuted, inner sep=0pt},
+  chip/.style={draw=#1, fill=white, rounded corners=4.5pt, line width=0.55pt, inner xsep=3.2pt,
+    inner ysep=1.6pt, font=\fontsize{6.3}{7}\selectfont, text=tInk},
+  bubble/.style={fill=#1, rounded corners=2.5pt, inner xsep=3.5pt, inner ysep=2.2pt,
+    font=\fontsize{6.4}{7.6}\selectfont, text=tInk, align=left},
+  flow/.style={-{Stealth[length=3.6pt,width=3.2pt]}, line width=0.7pt, draw=#1},
+  flowd/.style={-{Stealth[length=3.6pt,width=3.2pt]}, line width=0.7pt, draw=#1, dash pattern=on 2.2pt off 1.6pt},
+}

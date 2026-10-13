@@ -1,0 +1,138 @@
+% Figure 2: the method loop. Natural width 16 cm.
+\begin{tikzpicture}[x=1cm,y=1cm]
+% ---------------------------------------------------------------- geometry
+\def\Ax{0}\def\AX{4.2}
+\def\Bx{4.75}\def\BX{7.95}
+\def\Cx{8.5}\def\CX{12.2}
+\def\Dx{12.75}\def\DX{16.1}
+\def\Tt{5.5}\def\Tb{2.8}
+\def\Bt{2.3}\def\Bb{0}
+\pgfmathdeclarefunction{sig}{1}{\pgfmathparse{1/(1+exp(-1.702*max(-4.5,min(4.5,#1))))}}
+
+% ---------------------------------------------------------------- boxes
+\draw[tbox, draw=tRed!55, fill=tRedTint!45] (\Ax,\Tb) rectangle (\AX,\Tt);
+\draw[tbox, draw=tViolet!55, fill=tVioTint!50] (\Ax,\Bb) rectangle (\AX,\Bt);
+\draw[tbox] (\Bx,\Tb) rectangle (\BX,\Tt);
+\draw[tbox] (\Bx,\Bb) rectangle (\BX,\Bt);
+\draw[tbox, line width=0.8pt, draw=tInk!70, fill=tPaper] (\Cx,\Bb) rectangle (\CX,\Tt);
+\draw[tbox] (\Dx,\Tb) rectangle (\DX,\Tt);
+\draw[tbox] (\Dx,\Bb) rectangle (\DX,\Bt);
+
+% ================================================================ A: LLM oracle
+\fill[tRed] (\Ax+0.25,\Tt-0.26) circle (2.1pt);
+\node[tttl] at (\Ax+0.42,\Tt-0.17) {LLM oracle};
+\node[bubble=white, anchor=north west, text width=3.68cm] (q1) at (\Ax+0.15,\Tt-0.5)
+  {\textbf{Name axes.} Which ordered ligand properties affect this C--H arylation?};
+\node[chip=tRed, anchor=north west] (c1) at ($(q1.south west)+(0.06,-0.1)$) {steric bulk};
+\node[chip=tRed, anchor=west] (c2) at ($(c1.east)+(0.12,0)$) {$\sigma$-donor strength};
+\node[bubble=white, anchor=north west, text width=3.68cm] (q2) at ($(c1.south west)+(-0.06,-0.16)$)
+  {\textbf{Compare.} Bulkier: P($t$Bu)$_3$ or PPh$_3$?};
+\node[chip=tRed, anchor=north west, rounded corners=3pt, minimum width=0.42cm] (o1) at ($(q2.south west)+(0.06,-0.1)$) {$a$};
+\node[chip=tLine, anchor=west] (o2) at ($(o1.east)+(0.1,0)$) {about equal};
+\node[chip=tLine, anchor=west, rounded corners=3pt, minimum width=0.42cm] (o3) at ($(o2.east)+(0.1,0)$) {$b$};
+\node[tmut, anchor=west] at ($(o3.east)+(0.14,0)$) {both orders};
+
+% ================================================================ A: laboratory
+\fill[tViolet] (\Ax+0.25,\Bt-0.26) circle (2.1pt);
+\node[tttl] at (\Ax+0.42,\Bt-0.17) {Laboratory};
+\begin{scope}[shift={(\Ax+0.78,0.42)}, line width=0.6pt]
+  \fill[tViolet!22] (-0.36,0.04) -- (-0.13,0.62) -- (0.13,0.62) -- (0.36,0.04) -- cycle;
+  \draw[tViolet] (-0.10,1.22) -- (-0.10,0.86) -- (-0.42,0) -- (0.42,0) -- (0.10,0.86) -- (0.10,1.22);
+  \draw[tViolet] (-0.15,1.22) -- (0.15,1.22);
+  \fill[tViolet!70] (-0.06,0.25) circle (0.6pt) (0.1,0.38) circle (0.5pt) (0.02,0.5) circle (0.45pt);
+\end{scope}
+\node[ttxt, anchor=north west, text width=2.7cm, align=left] at (\Ax+1.4,\Bt-0.55)
+  {run $x_t=($ligand, base,\\ solvent, $T$, $c)$\\[3pt] observe $y_t$ (yield)};
+\node[tmut, anchor=south west] at (\Ax+1.4,0.16) {hours per experiment};
+
+% ================================================================ B: comparison likelihood
+\node[tttl] at (\Bx+0.17,\Tt-0.17) {Comparison likelihood};
+\node[ttxt, anchor=north west] at (\Bx+0.17,\Tt-0.52) {$p(o{=}a\mid z,\lambda)=\Phi(\lambda_k\Delta-\tau)$};
+\begin{scope}[shift={(\Bx+1.6,\Tb+0.78)}, x=0.37cm, y=0.95cm]
+  \draw[tLine, line width=0.4pt] (-3.3,0) -- (3.3,0);
+  \draw[tRed, line width=0.85pt, domain=-3.2:3.2, samples=60, smooth] plot (\x,{sig(1.6*\x-0.6)});
+  \draw[tMuted, line width=0.85pt, domain=-3.2:3.2, samples=60, smooth] plot (\x,{sig(-1.6*\x-0.6)});
+  \draw[tInk!55, line width=0.7pt, dash pattern=on 1.6pt off 1.2pt, domain=-3.2:3.2, samples=60, smooth]
+     plot (\x,{1-sig(1.6*\x-0.6)-sig(-1.6*\x-0.6)});
+  \node[ttxt, text=tRed, anchor=west] at (3.25,0.96) {$a$};
+  \node[ttxt, text=tMuted, anchor=east] at (-3.25,0.96) {$b$};
+  \node[ttxt, text=tInk!75, anchor=south] at (0,0.5) {$\approx$};
+  \node[ttxt, text=tMuted, anchor=north] at (0,-0.05) {$\Delta=z_{a,k}-z_{b,k}$};
+\end{scope}
+\node[tmut, anchor=south west] at (\Bx+0.17,\Tb+0.07) {$\lambda_k$: learned reliability of axis $k$};
+
+% ================================================================ B: experiment likelihood
+\node[tttl] at (\Bx+0.17,\Bt-0.17) {Experiment likelihood};
+\node[ttxt, anchor=north west] at (\Bx+0.17,\Bt-0.52) {$y=f(z_{x_1},\dots,z_{x_J},u)+\varepsilon$};
+\node[ttxt, anchor=north west] at (\Bx+0.17,\Bt-0.86) {$f\sim\mathcal{GP}(0,k_{\nu=5/2})$};
+\begin{scope}[shift={(\Bx+0.3,0.2)}, x=1cm, y=1cm]
+  \fill[tViolet!14] plot[domain=0:2.5, samples=40, smooth] (\x,{0.5+0.22*sin(115*\x)+0.06+0.1*abs(sin(80*\x+40))})
+     -- plot[domain=2.5:0, samples=40, smooth] (\x,{0.5+0.22*sin(115*\x)-0.06-0.1*abs(sin(80*\x+40))}) -- cycle;
+  \draw[tViolet, line width=0.8pt, domain=0:2.5, samples=40, smooth] plot (\x,{0.5+0.22*sin(115*\x)});
+  \foreach \px in {0.35,1.1,1.62,2.2} \fill[tViolet] (\px,{0.5+0.22*sin(115*\px)}) circle (1.2pt);
+  \draw[tLine, line width=0.4pt] (0,0.06) -- (2.6,0.06);
+\end{scope}
+
+% ================================================================ C: joint posterior
+\node[tttl] at (\Cx+0.17,\Tt-0.17) {Joint posterior over $z,\lambda,\theta$};
+\node[tmut, anchor=north west] at (\Cx+0.17,\Tt-0.5) {Laplace approximation, $S{=}32$ samples};
+\begin{scope}[shift={(\Cx+0.42,2.32)}, x=3.0cm, y=2.25cm]
+  \draw[tInk!60, line width=0.5pt, -{Stealth[length=3pt]}] (0,0) -- (1.04,0);
+  \draw[tInk!60, line width=0.5pt, -{Stealth[length=3pt]}] (0,0) -- (0,1.0);
+  \node[ttxt, anchor=north east] at (1.05,-0.03) {named axis $z^{N}$: steric bulk};
+  \node[ttxt, anchor=west] at (0.02,0.98) {free axis $z^{F}$};
+  \foreach \xx/\yy/\rx/\ry/\lab/\anc/\dx/\dy in {
+      0.10/0.72/0.045/0.09/PPhMe$_2$/west/0.06/0.0,
+      0.16/0.24/0.06/0.12/P(fur)$_3$/west/0.07/0.0,
+      0.38/0.52/0.04/0.065/PPh$_3$/west/0.05/0.0,
+      0.55/0.13/0.045/0.075/P($o$-Tol)$_3$/west/0.055/0.0,
+      0.62/0.80/0.05/0.085/PCy$_3$/west/0.06/0.0,
+      0.90/0.52/0.035/0.055/P($t$Bu)$_3$/south/0.0/0.07,
+      0.79/0.34/0.06/0.095/XPhos/west/0.07/0.0}{
+    \fill[tRed!13] (\xx,\yy) ellipse ({\rx} and {\ry});
+    \draw[tRed!45, line width=0.35pt] (\xx,\yy) ellipse ({\rx} and {\ry});
+    \fill[tInk] (\xx,\yy) circle (1.1pt);
+    \node[ttxt, anchor=\anc, font=\fontsize{5.9}{6.5}\selectfont] at (\xx+\dx,\yy+\dy) {\lab};
+  }
+\end{scope}
+% reliability bars
+\node[ttxt, anchor=west, font=\bfseries\fontsize{6.4}{7}\selectfont] at (\Cx+0.17,1.66) {Reliability $\lambda_k$ (posterior mean)};
+\foreach \lab/\val/\yy in {ligand: steric bulk/0.9/1.34, ligand: $\sigma$-donor/1.6/1.06, base: basicity/2.7/0.78, solvent: polarity/1.8/0.50}{
+  \node[ttxt, anchor=east, font=\fontsize{6.1}{7}\selectfont] at (\Cx+1.95,\yy) {\lab};
+  \fill[tRed!80] (\Cx+2.05,\yy-0.075) rectangle ++({0.44*\val},0.15);
+  \node[ttxt, anchor=west, font=\fontsize{6.0}{7}\selectfont, text=tMuted] at ({\Cx+2.1+0.44*\val},\yy) {\val};
+}
+\draw[tInk!50, line width=0.4pt] (\Cx+2.05,0.36) -- (\Cx+2.05,1.46);
+
+% ================================================================ D: decisions
+\node[tttl] at (\Dx+0.17,\Tt-0.17) {Choose comparisons};
+\node[ttxt, anchor=north west] at (\Dx+0.17,\Tt-0.52) {$U(q)=I(o_q;\,x^{\ast})$};
+\foreach \lab/\val/\col/\yy in {PCy$_3$ : P($o$-Tol)$_3$/0.95/tRed/4.32, K$_2$CO$_3$ : Cs$_2$CO$_3$/0.72/tRed/4.04, DMAc : NMP/0.16/tLine/3.76}{
+  \node[ttxt, anchor=west, font=\fontsize{6.0}{7}\selectfont] at (\Dx+0.17,\yy) {\lab};
+  \fill[\col] (\Dx+1.95,\yy-0.07) rectangle ++({1.1*\val},0.14);
+}
+\node[tmut, anchor=south west] at (\Dx+0.17,\Tb+0.07) {ask the top $m{=}8$ per iteration};
+
+\node[tttl] at (\Dx+0.17,\Bt-0.17) {Choose experiment};
+\node[ttxt, anchor=north west] at (\Dx+0.14,\Bt-0.52) {$\alpha(x)=\frac{1}{S}\sum_{s}\mathrm{qLogNEI}_{s}(x)$};
+\node[ttxt, anchor=north west] at (\Dx+0.17,\Bt-1.0) {$x_t=\arg\max_{x\in\mathcal{X}}\alpha(x)$};
+\node[tmut, anchor=south west, text width=3.0cm, align=left] at (\Dx+0.17,\Bb+0.1)
+  {averaged over coordinate samples};
+
+% ================================================================ arrows
+\def\ya{4.15}\def\yb{1.2}
+\draw[flow=tRed] (\AX,\ya) -- node[above, ttxt, text=tRed, yshift=0.5pt]{$o$} (\Bx,\ya);
+\draw[flow=tViolet] (\AX,\yb) -- node[above, ttxt, text=tViolet, yshift=0.5pt]{$y_t$} (\Bx,\yb);
+\draw[flow=tRed] (\BX,\ya) -- (\Cx,\ya);
+\draw[flow=tViolet] (\BX,\yb) -- (\Cx,\yb);
+\draw[flow=tInk!70] (\CX,\ya) -- (\Dx,\ya);
+\draw[flow=tInk!70] (\CX,\yb) -- (\Dx,\yb);
+% loops
+\draw[flow=tRed, rounded corners=4pt] (14.4,\Tt) -- (14.4,6.08) -- (1.6,6.08) -- (1.6,\Tt);
+\node[ttxt, text=tRed, anchor=south, fill=white, inner xsep=2pt] at (11.6,6.08) {next comparisons $(a,b,k)$};
+\draw[flowd=tRed!80, rounded corners=4pt] (9.1,\Tt) -- (9.1,5.74) -- (3.4,5.74) -- (3.4,\Tt);
+\node[tmut, text=tRed!85, anchor=south, fill=white, inner xsep=2pt, inner ysep=0.8pt] at (6.25,5.76)
+  {axis discovery: name a free dimension that gained relevance};
+\draw[flow=tViolet, rounded corners=4pt] (14.4,\Bb) -- (14.4,-0.42) -- (1.6,-0.42) -- (1.6,\Bb);
+\node[ttxt, text=tViolet, anchor=north, fill=white, inner xsep=2pt] at (8.0,-0.42) {next experiment $x_t$};
+\end{tikzpicture}

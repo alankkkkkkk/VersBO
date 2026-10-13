@@ -1,0 +1,51 @@
+% VersusBO -- ACL style (ARR; NAACL 2027 / COLING 2027). Switch "review" to "final" for camera-ready.
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\newcommand{\figdir}{../shared/figures/times}
+\input{../shared/preamble_common.tex}
+
+\title{VersusBO: Ask an LLM Which, Not How Much}
+
+\author{First Author \\
+  Affiliation / Address line 1 \\
+  \texttt{email@domain} \\\And
+  Second Author \\
+  Affiliation / Address line 1 \\
+  \texttt{email@domain} \\}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+\input{../shared/sections/abstract.tex}
+\end{abstract}
+
+\input{../shared/figures/fig_teaser.tex}
+\input{../shared/sections/intro.tex}
+\input{../shared/sections/related.tex}
+\input{../shared/figures/fig_method_float.tex}
+\input{../shared/sections/method.tex}
+\input{../shared/sections/experiments.tex}
+\input{../shared/sections/conclusion.tex}
+
+\section*{Limitations}
+\input{../shared/sections/limitations.tex}
+
+\section*{Ethical Considerations}
+\input{../shared/sections/ethics.tex}
+
+\bibliography{../shared/references}
+
+\appendix
+\input{../shared/sections/appendix.tex}
+
+\end{document}

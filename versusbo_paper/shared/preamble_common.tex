@@ -1,0 +1,22 @@
+% Packages and environments for the ACL build.
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{colortbl}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[most]{tcolorbox}
+\definecolor{tacitrow}{HTML}{FBECEB}
+\input{../shared/figures/tikzstyles.tex}
+
+\newtcolorbox{promptbox}[1]{enhanced, breakable, colback=tPaper, colframe=tLine, boxrule=0.4pt,
+  arc=2pt, left=4pt, right=4pt, top=2pt, bottom=3pt, fonttitle=\bfseries\small, coltitle=tInk,
+  colbacktitle=tPaper, title={#1}, attach title to upper={\ }, fontupper=\small}
+
+\theoremstyle{plain}
+\ifdefined\proposition\else\newtheorem{proposition}{Proposition}\fi
+\input{../shared/defs.tex}

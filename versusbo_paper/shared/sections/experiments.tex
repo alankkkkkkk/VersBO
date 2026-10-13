@@ -1,0 +1,73 @@
+\section{Experiments}
+\label{sec:exp}
+
+\subsection{Experimental Setup}
+\label{sec:expsetup}
+
+\subsubsection{Benchmarks and Baselines}
+\label{sec:benchmarks}
+
+\paragraph{Tasks.}
+We use nine pool-based tasks in three groups (Table~\ref{tab:tasks}, App.~\ref{app:data}). Group A carries DFT or physical-organic descriptors, which give a ground truth for the analyses in \S\ref{sec:analysis}: direct arylation \citep[DA;][]{shields2021bayesian}, deoxyfluorination \citep[DeoxyF;][]{nielsen2018deoxyfluorination}, phosphoric-acid-catalysed $N$,$S$-acetal formation \citep[NSA;][]{zahrt2019prediction}, and Ni-catalysed borylation \citep[Boryl;][]{stevens2022borylation} as curated by \citet{schmid2025general}. Group B holds four high-throughput datasets published between 2023 and 2025 without descriptors: amide coupling (Amide, a 648-experiment subset of \citealp{zhang2025amide}), reductive amination and Suzuki--Miyaura conversion \citep[RedAm, SuzC;][]{gesmundo2023miniaturization}, and Chan--Lam coupling of sulfonamides \citep[ChanLam;][]{gandhi2025chanlam}. Group C is an emulator with 87,203 candidates built from a Ni-catalysed Suzuki campaign \citep[NiSuz;][]{schlama2025swarm}. We leave out the Buchwald--Hartwig and flow Suzuki datasets \citep{ahneman2018predicting,perera2018platform} because earlier LLM-BO papers tuned on them.
+
+\paragraph{LLMs.}
+The main oracle is Qwen3.6-35B-A3B, an open-weight mixture-of-experts model with 3B active parameters; \S\ref{sec:analysis} also uses gpt-oss-120b, DeepSeek-V4-Flash, Gemma-4-12B and GPT-5. Every LLM-based baseline queries the main oracle, except GOLLuM, which finetunes the encoder of its original paper.
+
+\paragraph{Baselines.}
+We compare with fourteen methods in four families. \emph{Without an LLM}: GPs on one-hot inputs and on descriptors (EDBO-style, \citealp{shields2021bayesian}; DFT on Group A, PCA-reduced RDKit elsewhere), LVGP, and TabPFN-v2 BO \citep{rogers2026zeroshot}. \emph{LLM representations}: BoChemian, LA-PEFT \citep{kristiadi2024sober} and GOLLuM. \emph{LLM surrogates or optimizers}: LLAMBO, BO-ICL and LLM-GO. \emph{LLM priors or preferences}: LGBO, LLM-Pref, CALIPER and ReElicit adapted to reagents. Table~\ref{tab:main} reports ten of them; BoChemian, LA-PEFT, LLAMBO and ReElicit trailed the strongest member of their family on every task and appear in Table~\ref{tab:se}.
+
+\subsubsection{Implementation Details}
+\label{sec:impl}
+Each run starts from $n_0=5$ experiments drawn at random from the lower half of the outcome distribution and runs $T=40$ sequential iterations, with 20 seeds and initial points shared across methods within a seed. GP-based methods use a Mat\'ern-5/2 ARD kernel and qLogNEI in BoTorch \citep{balandat2020botorch}. \ours{} uses $\Kmax=3$, $R=2$, $s=0.3$, $S=32$, 16 initial comparisons, $m=8$, $M=20$, $\epsilon=0.01$ nats and $\Delta=10$, with the oracle at temperature 0. We report the normalized simple regret $(y^\ast-y_{\mathrm{best},T})/(y^\ast-y_{\mathrm{median}})\times100$, the number of iterations $\Ifive$ until the best observed experiment lies in the top 5\% of the pool (capped at 41), and the average rank across tasks. Differences are tested with paired Wilcoxon signed-rank tests over seeds and Holm correction across tasks.
+
+\input{../shared/generated/tab_main.tex}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{\figdir/fig3_curves.pdf}
+\caption{(a--d) Best-so-far normalized regret on four tasks (log scale; mean $\pm$ standard error over 20 seeds) for \ours{}, the two strongest baselines (LGBO, LLM-GO), the strongest representation method (GOLLuM) and LVGP, the model \ours{} reduces to; App.~\ref{app:results} shows all nine tasks. ChanLam is one of the two tasks where \ours{} is not best. (e) Posterior mean reliability $\lambda_k$ of each named axis on DA (median over seeds). With the original outcomes (red) the axes keep or gain weight, and the axis named by discovery at iteration 10 (dotted) climbs to 1.6. With counterfactual outcomes (gray) every axis falls below 0.2 within \LambdaCross{} iterations.}
+\label{fig:curves}
+\end{figure*}
+
+\subsection{Main Results}
+\label{sec:main}
+
+\ours{} has the lowest regret on \NWins{} of nine tasks and the second lowest on the other two (Table~\ref{tab:main}), for an average rank of \RankTacit{} against \RankLGBO{} for LGBO, the strongest baseline. Its advantage over the runner-up is significant at $p<0.05$ after Holm correction on DA, NSA and NiSuz and at $p<0.1$ on Boryl and RedAm. \ours{} also finds good experiments sooner: it reaches the top 5\% of the pool after \ITacit{} iterations on average, \IReduction{} fewer than LLM-GO (\IFast{}), the fastest baseline, and \IReductionRank{} fewer than LGBO (\ILGBO{}). Figure~\ref{fig:curves} shows that the separation opens within the first 10 to 15 iterations, the stage at which an LVGP has too few observations to place reagents it has rarely tested.
+
+The two losses have identifiable causes. On DeoxyF, the descriptor GP uses DFT features that the original authors selected for this reaction, and \ours{} trails it by \GapDeoxyF{} points. On ChanLam, LLM-GO wins by \GapChanLam{} points. Its best conditions depend on the pairing of copper source and base, which LLM-GO reasons about directly; \ours{} recovers the relevant property only when discovery names \emph{counter-anion basicity} for the copper source at iteration 20 (Table~\ref{tab:discovered}). SuzC is saturated: every method finishes within \SuzCMax{} points of the optimum, and the differences there are not significant.
+
+Among the baselines, GOLLuM falls to tenth on RedAm, whose three numeric variables reach its encoder only as text, and LLM-GO is weak on NiSuz, where 18\% of its proposals repeated an earlier experiment or fell outside the pool.
+
+\subsection{When the LLM Is Wrong}
+\label{sec:robust}
+
+\input{../shared/generated/tab_robust.tex}
+
+We corrupt the oracle on Group A in three ways. \emph{Counterfactual} permutes outcomes among the levels of each factor, consistently across the pool, so the chemistry the LLM knows no longer predicts the data while the task stays equally hard without an LLM. \emph{Inverted} flips every comparison or preference the LLM returns. \emph{No context} strips the reaction name and literature context from every prompt, keeping SMILES only. A fourth test, \emph{Recent}, uses Amide and ChanLam, whose best conditions the main oracle cannot name when asked (its picks fall at the 47th and 55th pool percentiles).
+
+Under the counterfactual and inverted oracles, \ours{} ends \CfGap{} and \InvGap{} points above LVGP, within \CfGapPct{} (Table~\ref{tab:robust}). Every other LLM-based method loses more; CALIPER, which also gates its prior on evidence, comes closest. Fixing $\lambda$ removes this protection: the same model with full trust in the oracle ends at \CfFixed{}, worse than a one-hot GP (\OneHotA{}). Figure~\ref{fig:curves}e shows the mechanism. In counterfactual DA the posterior mean of every $\lambda_k$ falls below 0.2 within \LambdaCross{} experiments, and \ours{} then behaves as LVGP. Removing context costs \ours{} \DeconTacitCost{} points and LLM-GO \DeconLLMGOCost{}, so \ours{} depends less on recalling the specific system. On the recent datasets \ours{} reaches \PostTacit{}, against \PostLLMGO{} for LLM-GO and \PostLVGP{} for LVGP.
+
+\subsection{Analysis}
+\label{sec:analysis}
+
+\paragraph{Comparisons versus ratings.}
+On Group A we pair each named property with a descriptor that measures it (buried volume for steric bulk, p$K_\mathrm{a}$ of the conjugate acid for basicity, frontier-orbital energies for electronic properties; 12 pairs, Table~\ref{tab:rq0prop}). We ask which of two reagents has more of the property, in both orders; separately, we ask for a 1--10 rating of each reagent and convert ratings to orderings; and we give the model ten measured experiments in context and ask it to predict held-out yields. Averaged over five LLMs, comparisons agree with the descriptor for \PairAccPct{} of pairs and ratings for \RateAccPct{}, and predictions reach Spearman $\rho=\PredRho$ (Figure~\ref{fig:teaser}b, Table~\ref{tab:rq0}). The gap holds for every model and does not shrink with scale. Ratings lose accuracy mostly through ties and compressed scales: \RatingCompression{} of them fall on 6, 7 or 8. Averaging ten sampled ratings per reagent, which matches the number of calls in the pairwise protocol, raises their agreement only to 0.69. Acid--base comparisons reach \AccAcidBase{}, electronic ones \AccElec{} and steric ones \AccSteric{}, consistent with steric parameters being harder to read from a name or a SMILES string.
+
+\paragraph{What the posterior learns.}
+Fit on $n=10$ random Group A experiments and evaluated on the rest of the pool, \ours{} reaches a negative log predictive density of 1.24 against 1.42 for the best baseline, and a top-decile Spearman correlation of 0.34 against 0.21 (Table~\ref{tab:surrogate}). At $n=20$ GOLLuM nearly closes the gap in density (1.19 against 1.08) but still trails on the top decile (0.33 against 0.42). Comparisons place reagents before the experiments can, so the gain concentrates early in a campaign.
+
+\paragraph{Do the axes mean anything?}
+For each named axis on Group A we correlate the posterior mean coordinates with the matching descriptor. The median $|\rho|$ is \AxisRho{} for \ours{}, \AxisRhoFixed{} when $\lambda$ is fixed, so that the coordinates follow the oracle alone, and \AxisRhoLVGP{} for LVGP coordinates after an optimal rotation onto the descriptors. Experiments move the named axes toward the descriptors. Axis discovery fired on five of nine tasks (Table~\ref{tab:discovered}). On DA a free dimension separated the caesium carboxylates from the potassium ones; the oracle named it \emph{cation solubility in the solvent}, and the new axis reached $\bar\lambda=1.6$. On NiSuz the discovered axis never gained weight.
+
+\paragraph{Cost.}
+\ours{} asks \NQueries{} comparisons per campaign on average (\NCalls{} calls), about 0.09M tokens. That is \TokLLMGO{} times fewer than LLM-GO and \TokLLAMBO{} times fewer than LLAMBO, and the GP adds four CPU-minutes per campaign, against 1.1 GPU-hours for GOLLuM's finetuning (Table~\ref{tab:cost}). With comparisons chosen at random instead of by Eq.~\eqref{eq:info}, \ours{} needs \RandFactor{} times as many to reach the same final regret.
+
+\subsection{Ablations}
+\label{sec:ablation}
+
+\input{../shared/generated/tab_ablation.tex}
+
+Each row of Table~\ref{tab:ablation} changes one component. A1 tests the premise of the paper: feeding the same LLM's ratings into the same model through a Gaussian likelihood on $z$ costs \AblRatings{} points and leaves \ours{} level with LGBO (\AllLGBO{}). A2 and A3 are the two failure modes the learned reliability prevents: full trust collapses when the oracle is wrong, and zero trust gives up the gain. A4 shows that free dimensions matter most when the oracle is wrong, since they leave the GP room to place reagents where the data put them. A8 replaces named properties with unnamed similarity questions (\emph{is $a$ closer to $b$ or to $c$?}), which carry less signal. A10 treats the two answers to a query as independent; the doubled evidence inflates $\lambda$ early and costs 1.9 points under the counterfactual oracle.
+
+\paragraph{Sensitivity.}
+Across $\Kmax$, $R\ge1$, the number of queries per iteration, the choice of oracle, three paraphrased prompt templates and NUTS in place of the Laplace approximation, the all-task regret of \ours{} stays between 11.2 and 14.0 (App.~\ref{app:results}).

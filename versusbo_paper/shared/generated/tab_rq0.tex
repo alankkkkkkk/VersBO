@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{3.6pt}
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+LLM & Pairwise & From ratings & Prediction $\rho$ \\
+\midrule
+Gemma-4-12B & 0.74 & 0.61 & 0.12 \\
+Qwen3.6-35B-A3B & 0.81 & 0.65 & 0.21 \\
+gpt-oss-120b & 0.83 & 0.67 & 0.24 \\
+DeepSeek-V4-Flash & 0.84 & 0.68 & 0.26 \\
+GPT-5 & 0.87 & 0.71 & 0.31 \\
+\midrule
+Mean & 0.82 & 0.66 & 0.23 \\
+\bottomrule
+\end{tabular}
+\caption{Accuracy of LLM judgments on Group A. The first two columns give the fraction of reagent pairs ordered as the matching descriptor orders them (macro-average over 12 property--descriptor pairs); ``about equal'' answers and tied ratings count as half correct. The last column is the Spearman correlation between in-context yield predictions and measured outcomes on held-out experiments.}
+\label{tab:rq0}
+\end{table}

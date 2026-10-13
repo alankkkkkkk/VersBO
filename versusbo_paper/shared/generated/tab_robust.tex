@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{@{}l ccccc@{}}
+\toprule
+Method & Orig. & Counterf. & Invert. & No ctx. & Recent \\
+\midrule
+LVGP (no LLM) & 23.7 & \textbf{23.7} & -- & -- & 30.9 \\
+LLM-GO & 17.9 & 38.2 & -- & 22.6 & 18.6 \\
+BO-ICL & 21.8 & 31.5 & -- & 24.9 & 24.3 \\
+LGBO & 17.1 & 29.8 & 34.6 & 19.8 & 22.7 \\
+LLM-Pref & 17.1 & 33.4 & 37.9 & 18.4 & 23.5 \\
+CALIPER & 18.0 & 26.1 & 25.3 & 19.1 & 23.5 \\
+\midrule
+\ours{}, fixed $\lambda$ & 11.6 & 41.7 & 45.2 & \textbf{12.0} & 19.4 \\
+\rowcolor{tacitrow}
+\ours{} & \textbf{11.0} & 24.4 & \textbf{24.0} & 12.3 & \textbf{18.1} \\
+\bottomrule
+\end{tabular}
+\caption{Regret ($\times 100$) on Group A with the original oracle and with counterfactual, inverted and context-free oracles. The last column averages Amide and ChanLam, two 2025 datasets whose best conditions the main oracle cannot name. A dash marks a test that does not apply. LVGP uses no LLM, so its counterfactual score equals its original one.}
+\label{tab:robust}
+\end{table}

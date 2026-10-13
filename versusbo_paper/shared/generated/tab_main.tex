@@ -1,0 +1,35 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4.6pt}
+\begin{tabular}{@{}l ccccc cccc c c@{}}
+\toprule
+ & \multicolumn{4}{c}{Group A: DFT descriptors} & \multicolumn{4}{c}{Group B: recent HTE} & C & & \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}\cmidrule(lr){10-10}
+Method & DA & DeoxyF & NSA & Boryl & Amide & RedAm & SuzC & ChanLam & NiSuz & Rank\,$\downarrow$ & $I_{5\%}$\,$\downarrow$ \\
+\midrule
+\multicolumn{12}{@{}l}{\textit{Without an LLM}}\\[1pt]
+\quad GP, one-hot & 31.4 & 28.7 & 36.2 & 33.5 & 29.8 & 24.1 & 2.1 & 41.3 & 38.6 & 10.89 & 32.1 \\
+\quad GP, descriptors & 18.2 & \textbf{9.4} & 22.4 & 24.7 & 21.5 & 19.3 & 1.8 & 35.2 & 27.4 & 7.00 & 22.9 \\
+\quad LVGP & 22.6 & 19.8 & 25.1 & 27.3 & 24.9 & 17.2 & 1.5 & 36.8 & 30.1 & 8.89 & 27.2 \\
+\quad TabPFN-v2 BO & 20.4 & 17.3 & 23.8 & 25.9 & 22.3 & 18.6 & 1.2 & 34.1 & 26.8 & 7.56 & 24.3 \\
+\midrule
+\multicolumn{12}{@{}l}{\textit{LLM representation}}\\[1pt]
+\quad GOLLuM & 16.9 & 15.2 & 19.7 & 22.8 & 18.4 & 21.7 & 1.9 & 33.6 & 24.2 & 6.67 & 21.3 \\
+\midrule
+\multicolumn{12}{@{}l}{\textit{LLM surrogate or optimizer}}\\[1pt]
+\quad BO-ICL & 19.3 & 18.4 & 26.5 & 23.1 & 17.6 & 20.8 & 2.4 & 30.9 & 29.7 & 8.11 & 21.7 \\
+\quad LLM-GO & 14.8 & 16.1 & 21.3 & \underline{19.2} & \underline{12.4} & \underline{15.9} & \underline{0.9} & \textbf{24.7} & 33.8 & 3.89 & \underline{13.4} \\
+\midrule
+\multicolumn{12}{@{}l}{\textit{LLM prior or preference}}\\[1pt]
+\quad LGBO & 15.6 & 13.4 & \underline{18.9} & 20.6 & 16.1 & 16.4 & 1.1 & 29.3 & \underline{22.5} & \underline{3.11} & 17.3 \\
+\quad LLM-Pref & \underline{14.1} & 12.7 & 20.2 & 21.4 & 15.3 & 17.8 & 1.4 & 31.6 & 23.9 & 4.33 & 18.0 \\
+\quad CALIPER & 15.9 & 14.8 & 19.4 & 21.9 & 16.7 & 16.9 & 1.3 & 30.2 & 23.1 & 4.33 & 18.9 \\
+\midrule
+\rowcolor{tacitrow}
+\ours{} (ours) & \textbf{8.3}$^{\dagger}$ & \underline{10.6} & \textbf{11.2}$^{\dagger}$ & \textbf{13.7}$^{\ddagger}$ & \textbf{9.8} & \textbf{12.1}$^{\ddagger}$ & \textbf{0.8} & \underline{26.4} & \textbf{14.6}$^{\dagger}$ & \textbf{1.22} & \textbf{10.3} \\
+\bottomrule
+\end{tabular}
+\caption{Normalized simple regret ($\times 100$, lower is better) after 40 iterations, mean over 20 seeds. Rank is the average rank over the nine tasks; $I_{5\%}$ is the mean number of iterations until the best observed experiment lies in the top 5\% of the pool (capped at 41). \textbf{Bold}: best; \underline{underlined}: second best. $^{\dagger}$/$^{\ddagger}$: \ours{} is better than the runner-up at $p<0.05$/$p<0.1$ (paired Wilcoxon over seeds, Holm-corrected over nine tasks). Standard errors are in Table~\ref{tab:se}.}
+\label{tab:main}
+\end{table*}

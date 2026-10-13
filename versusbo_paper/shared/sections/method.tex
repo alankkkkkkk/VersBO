@@ -1,0 +1,95 @@
+\section{Method}
+\label{sec:method}
+
+\subsection{Problem Setup}
+\label{sec:setup}
+An experiment $x=(e_1,\dots,e_J,u)$ chooses one reagent $e_j$ from a finite set $E_j$ of size $L_j$ for each categorical factor $j$ (ligand, base, solvent) and sets numeric variables $u\in\R^{p}$ (temperature, concentration). Running $x$ returns $y=f(x)+\varepsilon$ with $\varepsilon\sim\Normal(0,\sigma^2)$. The candidate pool $\X$ is the set of feasible combinations, and we seek its best member within $T$ evaluations, starting from $n_0$ observations.
+
+\paragraph{Latent-variable GPs.}
+A latent-variable GP (LVGP) assigns each reagent $e\in E_j$ a coordinate $z_e\in\R^{d_j}$ and models $f$ on the concatenated input
+\begin{equation}
+\begin{aligned}
+\phi_z(x)&=[z_{e_1},\dots,z_{e_J},u],\\
+f&\sim\GP\big(c,\,k_\theta(\phi_z(x),\phi_z(x'))\big),
+\end{aligned}
+\label{eq:lvgp}
+\end{equation}
+where $k_\theta$ is a Mat\'ern-5/2 kernel with automatic relevance determination. The coordinates are fit by maximizing the marginal likelihood $p(y\mid z,\theta)$ \citep{zhang2020latent}. With a handful of observations per reagent many configurations of $z$ explain the data equally well, and the GP generalizes poorly to reagents it has seen once or never.
+
+\paragraph{The oracle.}
+\ours{} sends an LLM two kinds of prompts, one naming properties of the reagents in a factor and one comparing two reagents along a named property; neither mentions the objective or an experiment (App.~\ref{app:prompts}).
+
+\subsection{Named and Free Coordinates}
+\label{sec:coords}
+\ours{} splits each coordinate into named and free parts, $z_e=(\zN_e,\zF_e)$ with $\zN_e\in\R^{K_j}$ and $\zF_e\in\R^{R_j}$. Experiments inform all of $z$ through the GP; LLM comparisons inform only $\zN$.
+
+\paragraph{Naming axes.}
+For each factor we give the LLM the reaction class, the role of the factor and the reagents by name and SMILES, and ask for up to $\Kmax=3$ ordered properties that a chemist would expect to affect the outcome; a second prompt merges synonyms. The name fixes the sign of each axis: a larger $z_{e,k}$ means \emph{more} of property $k$. On direct arylation the oracle typically returns \emph{steric bulk} and \emph{$\sigma$-donor strength} for ligands and \emph{basicity} for bases.
+
+\paragraph{Identifiability and dimension.}
+The GP likelihood is unchanged if a named axis is shifted, or stretched while its ARD length scale stretches with it, and the comparison likelihood below is unchanged under the same stretch if $\lambda_k$ shrinks in proportion. We remove both symmetries by standardizing every named axis over the reagents of its factor (zero mean, unit variance, enforced by reparameterization), so $\lambda_k$ is measured in units of the spread of that property. Free coordinates have prior $\Normal(0,s^2)$ with $s=0.3$, which lets them grow only when the data ask for it, and the free coordinates of one reagent per factor are fixed at the origin. A factor with $L_j$ levels embeds without loss in $L_j-1$ dimensions, so we keep at most $L_j-1$ named axes and set $R_j=\min(R,\,L_j-1-K_j)$. The GP input dimension is
+\begin{equation}
+d=\textstyle\sum_{j}(K_j+R_j)+p,
+\label{eq:dim}
+\end{equation}
+which ranges from 8 to 14 on our tasks with $R=2$.
+
+\subsection{Comparison Likelihood}
+\label{sec:likelihood}
+A query $q=(a,b,k)$ asks whether reagent $a$ has more of property $k$ than reagent $b$. The answer $o$ takes one of three values: $a$, $b$, or \emph{about equal}. With $\Delta_q=z_{a,k}-z_{b,k}$, we use an ordered probit with tie threshold $\tau\ge0$:
+\begin{equation}
+\begin{aligned}
+p(o{=}a\mid z,\lambda,\eta_q)&=\Phi(\lambda_k\Delta_q+\eta_q-\tau),\\
+p(o{=}b\mid z,\lambda,\eta_q)&=\Phi(-\lambda_k\Delta_q-\eta_q-\tau),
+\end{aligned}
+\label{eq:probit}
+\end{equation}
+and \emph{about equal} takes the remaining mass. The reliability $\lambda_k\ge0$ sets how sharply the answer depends on the coordinates. At $\lambda_k=0$ every answer is equally likely whatever $z$ is, so comparisons along axis $k$ carry no information. Its prior is a two-component mixture, $p(\lambda_k)=\tfrac12\HN(\lambda_k;0.1)+\tfrac12\HN(\lambda_k;3)$, a \emph{skeptic} and a \emph{believer}, and the data decide which component an axis belongs to.
+
+We ask each query twice, once in each order, to cancel position bias \citep{wang2024fair}. A misremembered fact misleads both phrasings, so the two answers share the query effect $\eta_q\sim\Normal(0,\sigma_\eta^2)$, which we integrate out with Gauss--Hermite quadrature; repeating a query then cannot by itself drive $\lambda_k$ up. The threshold $\tau$ and scale $\sigma_\eta$ are shared across axes and have half-normal priors.
+
+\subsection{Joint Posterior and Experiment Selection}
+\label{sec:posterior}
+With experiments $\D$ and comparisons $\Cset$, the posterior over coordinates, reliabilities and kernel hyperparameters is
+\begin{equation}
+\begin{aligned}
+p(z,\lambda,\theta\mid\D,\Cset)\propto{}&p(y\mid z,\theta)\prod_{q\in\Cset}p(o_q\mid z,\lambda)\\
+&\times p(z)\,p(\lambda)\,p(\theta),
+\end{aligned}
+\label{eq:posterior}
+\end{equation}
+where $p(o_q\mid z,\lambda)$ is the marginal over $\eta_q$ of all answers to $q$, and $\tau,\sigma_\eta$ are suppressed. We fit $\theta$ by type-II maximum likelihood, find the joint mode of $(z,\log\lambda)$ with L-BFGS, and draw $S=32$ samples from a Laplace approximation around it. The next experiment maximizes the acquisition averaged over these samples,
+\begin{equation}
+\alpha(x)=\frac{1}{S}\sum_{s=1}^{S}\mathrm{qLogNEI}\big(\phi_{z^{(s)}}(x)\mid\D,\theta\big),
+\label{eq:acq}
+\end{equation}
+with qLogNEI from \citet{ament2023unexpected}. A reagent with uncertain coordinates spreads its candidates across samples, and $\alpha$ rewards trying it when the spread covers promising regions.
+
+\subsection{Choosing Comparisons}
+\label{sec:queries}
+Most comparisons would not change what \ours{} does next. We score a candidate query by the mutual information between its answer and the identity of the next best experiment, in the spirit of predictive entropy search \citep{hernandezlobato2014pes}. For each posterior sample $s$ we draw a Thompson sample of $f$ on the pool and record its maximizer $x^{\ast(s)}$, and we compute the answer distribution $p(o\mid z^{(s)},\lambda^{(s)})$. The score is
+\begin{equation}
+U(q)\approx H\Big[\bar p(o)\Big]-\sum_{c}\frac{n_c}{S}\,H\Big[\bar p_c(o)\Big],
+\label{eq:info}
+\end{equation}
+where $\bar p$ averages the answer distribution over all samples, $c$ ranges over distinct maximizers, $n_c$ counts the samples that chose $c$, and $\bar p_c$ averages over those samples. Candidates are pairs of reagents that appear among the top $M=20$ experiments under $\alpha$. \ours{} asks the $m=8$ highest-scoring queries per iteration and skips the round when the best score falls below $\epsilon=0.01$ nats.
+
+\subsection{Naming New Axes}
+\label{sec:discovery}
+A free dimension that the GP uses heavily marks a property the LLM did not name. Every $\Delta=10$ iterations, \ours{} computes the relevance $\sigma_f^2/\ell_r^2$ of each free dimension $r$. If it exceeds the median relevance of the named axes of that factor, \ours{} shows the LLM the three reagents with the highest and the three with the lowest posterior mean on $r$ and asks what property separates them. The answer becomes a new named axis with the skeptic prior alone, and dimension $r$ is reset. The six reagents shown in the naming prompt are excluded from that axis's comparisons, so the evidence that gives the new axis weight comes from reagents the prompt did not use. Algorithm~\ref{alg:tacit} in App.~\ref{app:impl} lists the full loop.
+
+\subsection{Properties}
+\label{sec:props}
+Proofs, full assumptions and a remark on how the input dimension enters regret bounds are in App.~\ref{app:proofs}.
+
+\begin{proposition}[Reduction]
+\label{prop:reduction}
+If $\lambda_k=0$ for every named axis, the comparison likelihood is constant in $z$, and the \ours{} posterior over $(z,\theta)$ equals the LVGP posterior under the same prior on $z$.
+\end{proposition}
+The statement follows from Eq.~\eqref{eq:probit}. Its use runs in the other direction: the skeptic component gives the posterior a path back to LVGP, so a misleading LLM costs at most the information its comparisons would have added.
+
+\begin{proposition}[Consistent reliabilities, informal]
+\label{prop:consistency}
+Suppose (A1) $f$ is a GP-representable function of coordinates $z^\ast$ in the model class; (A2) every reagent is tested infinitely often as $T$ grows; and (A3) answers to distinct queries are independent given $z^\ast$ and the query effects, following Eq.~\eqref{eq:probit} at some $\lambda_k^\ast\ge0$. Then, as $T$ and the number of distinct queries on axis $k$ grow, the posterior of $\lambda_k$ concentrates at $\lambda_k^\ast$, and $\lambda_k^\ast=0$ when the answers do not depend on $z^\ast$ along axis $k$.
+\end{proposition}
+Standardization makes $\lambda_k^\ast$ unique: without it, $(c\,z_{\cdot,k},\,\lambda_k/c,\,c\,\ell_k)$ fits the data as well as $(z_{\cdot,k},\lambda_k,\ell_k)$ for any $c>0$. Assumption (A3) is the one most likely to fail, because LLM errors on related questions correlate; \S\ref{sec:robust} tests the consequence.
