@@ -1,17 +1,6 @@
 \begin{figure*}[t]
 \centering
-\begin{minipage}[b]{0.345\textwidth}\centering
-\resizebox{\linewidth}{!}{\input{../shared/figures/fig1a_ask.tex}}\\[3pt]
-{\small (a) Four ways to ask an LLM}
-\end{minipage}\hfill
-\begin{minipage}[b]{0.315\textwidth}\centering
-\includegraphics[width=\linewidth]{\figdir/fig1b_accuracy.pdf}\\[1pt]
-{\small (b) Comparisons beat ratings}
-\end{minipage}\hfill
-\begin{minipage}[b]{0.315\textwidth}\centering
-\includegraphics[width=\linewidth]{\figdir/fig1c_tradeoff.pdf}\\[1pt]
-{\small (c) Right versus wrong oracle}
-\end{minipage}
-\caption{Ask which, not how much. (a) Current methods query an LLM for embeddings, ratings or outcome predictions; \ours{} asks only for comparisons between reagents along a named property. (b) Agreement with DFT descriptor orderings on Group A, for pairwise comparisons and for orderings implied by 1--10 ratings from the same model; the dashed line marks chance. (c) Final regret on Group A when the LLM's chemistry is right (original outcomes, $x$-axis) and wrong (outcomes permuted across reagents, $y$-axis). Methods without an LLM lie on the diagonal, and the shaded region is worse than LVGP, which ignores the LLM. Learning the reliability $\lambda$ moves \ours{} from the top-left to the bottom-left.}
+\includegraphics[width=\textwidth]{../shared/figures/fig1_motivation.pdf}
+\caption{Ask which, not how much. \textbf{Left:} reaction optimization searches mostly over categorical choices, and each experiment takes hours. \textbf{Middle:} asked for absolute quantities, LLMs predict yields that correlate weakly with measured ones (Spearman $\rho=\PredRho$), and the orderings implied by their 1--10 ratings agree with descriptor orderings for \RateAccPct{} of reagent pairs. \textbf{Right:} asked which of two reagents has more of a named property, the same models agree with the descriptors for \PairAccPct{} of pairs (means over five LLMs on Group A, \S\ref{sec:analysis}). \ours{} builds its BO model on such comparisons; the landscape and trajectories are illustrative.}
 \label{fig:teaser}
 \end{figure*}

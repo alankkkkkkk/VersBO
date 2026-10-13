@@ -1,6 +1,8 @@
 \section{Method}
 \label{sec:method}
 
+Figure~\ref{fig:method} gives an overview of the loop that \S\ref{sec:coords}--\ref{sec:discovery} describe.
+
 \subsection{Problem Setup}
 \label{sec:setup}
 An experiment $x=(e_1,\dots,e_J,u)$ chooses one reagent $e_j$ from a finite set $E_j$ of size $L_j$ for each categorical factor $j$ (ligand, base, solvent) and sets numeric variables $u\in\R^{p}$ (temperature, concentration). Running $x$ returns $y=f(x)+\varepsilon$ with $\varepsilon\sim\Normal(0,\sigma^2)$. The candidate pool $\X$ is the set of feasible combinations, and we seek its best member within $T$ evaluations, starting from $n_0$ observations.

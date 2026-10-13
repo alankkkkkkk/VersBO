@@ -83,6 +83,20 @@ For Amide and ChanLam we ask the main oracle, with the full reaction description
 \end{figure*}
 
 \input{../shared/generated/tab_rq0.tex}
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}[b]{0.315\textwidth}\centering
+\includegraphics[width=\linewidth]{\figdir/fig1b_accuracy.pdf}\\[1pt]
+{\small (a) Comparisons beat ratings}
+\end{minipage}\hspace{0.08\textwidth}
+\begin{minipage}[b]{0.315\textwidth}\centering
+\includegraphics[width=\linewidth]{\figdir/fig1c_tradeoff.pdf}\\[1pt]
+{\small (b) Right versus wrong oracle}
+\end{minipage}
+\caption{(a) Agreement with DFT descriptor orderings on Group A, for pairwise comparisons and for orderings implied by 1--10 ratings from the same model; the dashed line marks chance. (b) Final regret on Group A when the LLM's chemistry is right (original outcomes, $x$-axis) and wrong (outcomes permuted across reagents, $y$-axis). Methods without an LLM lie on the diagonal, and the shaded region is worse than LVGP, which ignores the LLM. Learning the reliability $\lambda$ moves \ours{} from the top-left to the bottom-left.}
+\label{fig:evidence}
+\end{figure*}
 \input{../shared/generated/tab_surrogate.tex}
 \input{../shared/generated/tab_cost.tex}
 \input{../shared/generated/tab_discovered.tex}
